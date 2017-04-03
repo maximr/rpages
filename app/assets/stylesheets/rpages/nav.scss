@@ -1,0 +1,218 @@
+// .navbar .nav,
+// .navbar .nav > li,
+// .navbar .navbar-brand {
+//   float:none;
+//   display:inline-block;
+//   *display:inline; /* ie7 fix */
+//   *zoom:1; /* hasLayout ie7 trigger */
+//   vertical-align: top;
+// }
+
+.navbar-inner {
+  text-align:center;
+}
+
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  background: none !important;
+  text-transform: uppercase;
+  padding: 3em 2em;
+  text-align: center;
+
+  .navbar-brand {
+    //background-image: url('/logo/logo_holodeckvr_500@0,1x.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 30%;
+    height: 100%;
+    float: left;
+    min-height: 44px;
+    padding: 0;
+    min-width: 44px;
+    margin-top: -0.5%;
+    margin-left: 1%;
+    border-bottom: none;
+
+    &:hover {
+      border-bottom: none;
+      animation: pulse 1s linear;
+    }
+
+    @include media-breakpoint-up('xs') { 
+      //background-image: url('/logo/logo_holodeckvr_500@0,3x.png');
+      min-height: 60px;
+      min-width: 60px;
+      margin-top: -1.5%;
+    }
+
+    @include media-breakpoint-up('md') { 
+      width: 17%;
+      //background-image: url('/logo/logo_holodeckvr_500@0,5x.png');
+      min-height: 100px;
+      min-width: 100px;
+      margin-top: -1.5%;
+    }
+
+    @include media-breakpoint-up('lg') { 
+      width: 15%;
+      //background-image: url('/logo/logo_holodeckvr_500@0,5x.png');
+      min-height: 120px;
+      min-width: 120px;
+      margin-top: -1.5%;
+    }
+
+    @include media-breakpoint-up('ll') { 
+      width: 11%;
+      //background-image: url('/logo/logo_holodeckvr_500@0,75x.png');
+      min-height: 150px;
+      min-width: 150px;
+      margin-top: -1.5%;
+    }
+  }
+
+  .navbar-toggler {
+    padding: 0;
+    border: none;
+    color: white;
+    cursor: pointer;
+   
+    i {
+      transition: font-size 200ms ease-in-out;
+      font-size: 2em;
+    }
+
+    &:hover {
+      color: darken(white, 10%);
+      border: none;
+
+      i {
+        font-size: 2.15em;
+      }
+    }
+  }
+
+  .navbar-collapse {
+    &.collapse, &.collapsing {
+      margin-top: 4rem;
+      display: none;
+
+      &.show {
+        display: block;
+      }
+
+      .nav-item {
+        display: block;
+        width: 100%;
+        float: none;
+        margin: 0.3rem 0;
+        border-bottom: none;
+
+        &:hover {
+          background: lighten(black, 20%);
+          border-bottom: none;
+        }
+      }
+
+      @include media-breakpoint-down('sm') {
+        .nav-item {
+          margin: 0.1rem 0;
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+
+  .nav-item.dropdown {
+    & > .dropdown-menu {
+      background: none; //rgba(150, 150, 150, 0.9);
+      border: none;
+      border-top: 3px solid white;
+      border-radius: 0;
+      margin: 0;
+    }
+
+    &.open {
+      .nav-dropdown:hover {
+        border-bottom: 1px solid rgba(255,255,255,0);
+        color: $brand-primary;
+      }
+
+      .dropdown-item:focus, .dropdown-item:hover {
+        background: none;
+      }
+
+      .nav-link + .nav-link {
+        margin: 0;
+      }
+    }
+
+    @include media-breakpoint-down('lg') { 
+      position: relative;
+      display: block;
+      //width: 100%;
+
+       & > .dropdown-menu { 
+          width: 100%;
+          position: relative;
+
+          .nav-link {
+            text-align: center;
+          }
+
+          .nav-link + .nav-link {
+            margin: 0;
+          }
+       }
+    }
+
+    @include media-breakpoint-down('sm') { 
+      width: 100%;
+    }
+  }
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.68) 70%, rgba(0, 0, 0, 0) 100%);
+    z-index: -1;
+    opacity: 0.9;
+
+    @include media-breakpoint-down('sm') {
+      background: black;
+    }
+  }
+
+  a, a:visited {
+    font-family: 'OpenSans', sans-serif;
+    font-size: 1.1rem;
+    cursor: pointer;
+    color: white;
+    border-bottom: 1px solid rgba(255,255,255,0);
+    text-decoration: none;
+
+    &:hover {
+      border-bottom: 1px solid white;
+    }
+  }
+
+  @include media-breakpoint-down('lg') {
+    .nav.navbar-nav {
+      font-size: 1.4rem;
+    }
+  }
+
+  @include media-breakpoint-down('sm') {
+    padding: 1em;
+    padding-bottom: 0;
+  }
+}

@@ -1,0 +1,89 @@
+.slide.flipcard_slide {
+  &.slide--black_back {
+    .icon-item-container {
+      .front, .back { 
+        border: 0.4vh solid white;
+      }
+    }
+  }
+
+  .usecase_container + .usecase_container {
+    margin-top: 5%;
+  }
+
+  .usecase_container .flip-card-col {
+    min-height: 25vh;
+  }
+
+  .icon-item-container {
+    cursor: pointer;
+    margin-bottom: 3%;
+
+    .front, .back {
+      border: 0.4vh solid $brand-primary;
+      padding: 5% 8%;
+      min-height: 25vh;
+    }
+
+    .back {
+      padding: 10% 5%;
+
+      .btn {
+        &:hover {
+          background: none;
+        }
+      }
+    }
+
+    .item-img {
+      margin-bottom: 5%;
+      display: block;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .item-head {
+      font-weight: bolder;
+      font-size: 1.3rem;
+      text-align: center;
+      display: block;
+    }
+
+    .item-desc {
+      display: none;
+      p {
+        font-size: 1.2rem;
+        padding-top: 1.2rem;
+        text-align: center;
+        //text-align: justify;
+      }
+    }
+
+    &.active {
+      .item-img {
+        display: none;
+      }
+
+      .item-desc {
+        display: block;
+      }
+    }
+
+    @include media-breakpoint-down('ll') { 
+      .item-head { font-size: 1.1rem; }
+      .item-desc p { font-size: 1rem; }
+    }
+
+    @include media-breakpoint-down('md') { 
+      .item-head { font-size: 1.7rem; }
+      .item-desc p { font-size: 1.5rem; }
+    }
+
+    @include media-breakpoint-down('sm') { 
+      .item-head { font-size: .9rem; }
+      .item-desc p { font-size: .85rem; }
+    }
+  }
+}

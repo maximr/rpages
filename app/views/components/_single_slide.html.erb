@@ -1,0 +1,15 @@
+<% random_id = "slide_image_css_" << (0...20).map { ('a'..'z').to_a[rand(26)] }.join %>
+
+<div class="carousel-item carousel-background-image slide <%= 'active' if active_slide %>" id="<%= random_id %>">
+  <% if image_object.send(image_field).present? %>
+    <%= render 'partials/slide_url_data', object: image_object, klass: random_id, method: image_field, id: true %>
+  <% end %>
+
+  <section class="slide_content_container <%= 'animated_container' if slide.block_animation_active %>" data-animation="<%= slide.block_animation %>" data-animation-delay="<%= slide.block_animation_delay %>">
+    <div class="row d-flex flex-row justify-content-center align-items-center">
+      <div class="<%= slide.get_block_cols %>">
+        <%= render get_template(slide), slide: slide %>
+      </div>
+    </div>
+  </section>
+</div>

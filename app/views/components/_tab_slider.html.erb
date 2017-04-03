@@ -1,0 +1,28 @@
+<div class="slide-out slide-out-contact">
+  <% @office = @office.present? ? @office : Office.first %>
+
+  <%= link_to('', class: 'handle', style: 'font-size: 90%;') do %>
+    <%= fa_icon "address-card-o rotate-90 2x", text: "KONTAKT", right: false %> 
+  <% end %>
+  <p class="lead medium">
+    <%= link_to("tel:#{@office.phone_number.gsub(/\s+/, "")}", class: 'tab_link') do %>
+      <%= fa_icon 'phone', text: "#{@office.phone_number if @office.present?}", right: false %>
+    <% end %>
+  </p>
+  <p class="lead medium">
+    <%= link_to("tel:#{@office.fax_number.gsub(/\s+/, "")}", class: 'tab_link') do %>
+      <%= fa_icon 'fax', text: "#{@office.fax_number if @office.present?}", right: false %>
+    <% end %>
+  </p>
+  <p class="lead medium">
+    <%= link_to('', class: 'tab_link action_link', data: {target: 'map_slide'}) do %>
+      <%= fa_icon 'map-marker', text: "#{@office.location if @office.present?}", right: false %>
+    <% end %>
+  </p>
+  <p class="lead medium">
+    <%= link_to("mailto:#{@office.email}", class: 'tab_link') do %>
+      <%= fa_icon 'envelope-o', text: "#{@office.email if @office.present?}", right: false %>
+    <% end %>
+  </p>
+  <p class="lead small">Schreiben Sie uns, wenn Sie Terminwünsche haben. Auch Anregungen und Kritik nehmen wir gern entgegen.</p>
+</div>

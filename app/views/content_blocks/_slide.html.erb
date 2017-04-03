@@ -1,0 +1,27 @@
+
+  <% random_class = "slide_css_" << (0...20).map { ('a'..'z').to_a[rand(26)] }.join %>
+
+  <section class="<%= build_content_block_classes(slide) %>" style="<%= build_content_block_style(slide) %>" id="<%= random_class %>">
+
+    <% if slide.has_video? && !is_mobile? %>
+      <section class='video_prepend <%= "#{random_class}_prepend" %>' data-video-urls="<%= get_video_settings(slide) %>">
+      </section>
+    <% elsif slide.has_gallery? %>
+      <% @gallery = slide.galleries.first %>
+
+      <%= render 'components/slider', gallery_object: @gallery, picture_object: :pics, identificator: 'random_class', slide: slide, interval: 40000 %>
+    <% elsif slide.has_image? %>
+      <%= render 'partials/slide_url_data', object: slide, klass: "#{random_class}:before", method: :background_image, id: true %>
+    <% end %>
+
+    <% unless slide.has_gallery? %>
+      <section class="slide_content_container <%= 'animated_container' if slide.block_animation_active %>" data-animation="<%= slide.block_animation %>" data-animation-delay="<%= slide.block_animation_delay %>">
+        <div class="row d-flex flex-row justify-content-center align-items-center">
+          <div class="<%= slide.get_block_cols %>">
+            <%= render get_template(slide), slide: slide %>
+          </div>
+        </div>
+      </section>
+    <% end %>
+
+  </section>

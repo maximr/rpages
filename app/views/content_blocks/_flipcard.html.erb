@@ -1,0 +1,48 @@
+<% if slide.key.present? %>
+  <div class="row d-flex flex-row justify-content-center align-items-center">
+    <div class="col-xs-12 spacer-col">
+      <h2 class="display-2"><%= slide.key %></h2>
+    </div>
+  </div>
+<% end %>
+
+<!-- <div class="row d-flex flex-row justify-content-center align-items-center usecase_container">
+  <div class="col-xs-12"> -->
+    <div class="row d-flex flex-row justify-content-center align-items-center">
+      <% slide.get_custom_content_items.each_with_index do |block, i| %>
+        <div class="<%= slide.get_section_cols %> flip-card-col">
+          <div class="icon-item-container">
+            <div class="front" style="border-color: <%= slide.get_block_text_color ? slide.get_block_text_color : 'inherit'%>;">
+
+              <% if block['img'] %>
+                <span class="item-img">
+                  <%= image_tag(slide.get_image_url(block['img']), class: 'img-fluid')%>
+                </span>
+              <% end %>
+              <span class="item-head"><%= block['head'] %></span>
+            </div>
+            <div class="back" style="border-color: <%= slide.get_block_text_color ? slide.get_block_text_color : 'inherit'%>;">
+              <span class="item-desc">
+                <span class="item-head"><%= block['head'] %></span>
+                <p>
+                  <%= block['desc'].html_safe %>
+                  <% if strip_tags(block['body']).present? %>
+                    <% if slide.is_normal_link? %>
+                      <%= link_to 'details...', strip_tags(block['body']), class: 'btn btn-outline-primary btn-lg btn-cta-main', style: generate_cta_styles(slide) %>
+                    <% elsif slide.is_inline_link? %>
+                      <%= link_to('', class: 'btn btn-outline-primary btn-lg btn-cta-main popup-trigger', data: {toggle: "modal", target: "#main_modal", aparams: {num: i, id: slide.id}.to_json}, 
+                      style: generate_cta_styles(slide)) do %>
+                        details...
+                        <span style="display: none;" class="item-title"><%= block['head'] %></span>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                </p>
+              </span>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+<!--   </div>
+</div> -->

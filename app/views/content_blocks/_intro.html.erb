@@ -1,0 +1,21 @@
+<div class="jumbotron jumbotron-fluid jumbotron-container jumbotron-container--left intro_container">
+  <div class="container">
+    <div class="spacer_right">
+    </div>
+    <div class="cutout_content">
+      <div class="spacer_left">
+      </div>
+      <div class="cutout_text">
+        <% if slide.key.present? %>
+          <h1 class="site_main_head display-1"><%= slide.key %></h1>
+        <% end %>
+
+        <% if slide.content.present? %>
+          <div class="sub_info">
+            <%= slide.clean_content(slide.content).html_safe %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

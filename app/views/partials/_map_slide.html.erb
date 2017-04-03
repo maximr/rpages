@@ -1,0 +1,32 @@
+<% if @office.map_coordinates.present? %>
+  <section class="slide slide--half slide--gray_back slide_flex slide_flex_bottom map_slide">
+    <div class="row flex-items-xs-middle flex-items-xs-center">
+      <div class="col-xs-12 flex-xs-top flex-xs-middle item_container">
+        <h2 class="display-1 slide_head">Anfahrt</h3>
+        <h3 class="display-4 section_head" style="margin-bottom: 0;">
+          <%= @office.location %>
+        </h3>
+        <h3 class="display-5 section_head">
+          T: <%= link_to @office.phone_number, "tel:#{@office.phone_number.gsub(/\s+/, "")}", class: "contact_link" %> | 
+          F: <%= link_to @office.fax_number, "tel:#{@office.fax_number.gsub(/\s+/, "")}", class: "contact_link" %>
+        </h3>
+        <br/>
+
+        <div class="col-xs-12">
+          <div class="row flex-items-xs-middle flex-items-xs-center" style="margin: 0;">
+            <%= @office.location_infos.find_each do |li| %>
+              <div class="col-xs-6 col-md-3 col-lg-2 col-xl-1">
+                <%= link_to('', type: "button", class: "btn btn-disabled", data: { toggle: "tooltip", html: "true", title: li.description }) do %>
+                  <%= fa_icon "#{li.icon_name} 2x", text: li.title, right: false %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-xs-12 flex-xs-bottom" id="map_container" data-coordinates="<%= @office.map_coordinates %>" data-marker-title="<%= @office.name %>" >
+      </div>
+    </div>
+  </section>
+<% end %>

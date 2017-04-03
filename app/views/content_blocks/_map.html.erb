@@ -1,0 +1,18 @@
+<% if slide.key.present? %>
+  <div class="row d-flex flex-row justify-content-center align-items-center">
+    <div class="col-xs-12 spacer-col">
+      <h2 class="display-2"><%= slide.key %></h2>
+    </div>
+  </div>
+<% end %>
+
+<div class="row d-flex flex-row justify-content-center align-items-center">
+  <% slide.get_custom_content_items.each do |block| %>
+    <div class="col-xs-12 justify-content-bottom align-items-bottom" 
+      id="map_container" 
+      data-coordinates="<%= block['head'] %>" 
+      data-marker-title="<%= strip_tags block['desc'] %>" >
+    </div>
+  <% end %>
+</div>
+

@@ -1,0 +1,59 @@
+<head>
+  <!-- Required meta tags always come first -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no maximum-scale=1.0, user-scalable=0">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+  <link rel="apple-touch-icon-precomposed" sizes="57x57" href="<%= image_url('/fav/apple-touch-icon-57x57.png') %>" />
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<%= image_url('/fav/apple-touch-icon-114x114.png') %>" />
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<%= image_url('/fav/apple-touch-icon-72x72.png') %>" />
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<%= image_url('/fav/apple-touch-icon-144x144.png') %>" />
+  <link rel="apple-touch-icon-precomposed" sizes="60x60" href="<%= image_url('/fav/apple-touch-icon-60x60.png') %>" />
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="<%= image_url('/fav/apple-touch-icon-120x120.png') %>" />
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="<%= image_url('/fav/apple-touch-icon-76x76.png') %>" />
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="<%= image_url('/fav/apple-touch-icon-152x152.png') %>" />
+  <link rel="icon" type="image/png" href="<%= image_url('/fav/favicon-196x196.png') %>"   sizes="196x196"/>
+  <link rel="icon" type="image/png" href="<%= image_url('/fav/favicon-96x96.png')   %>"   sizes="96x96" />
+  <link rel="icon" type="image/png" href="<%= image_url('/fav/favicon-32x32.png')   %>"   sizes="32x32" />
+  <link rel="icon" type="image/png" href="<%= image_url('/fav/favicon-16x16.png')   %>"   sizes="16x16" />
+  <link rel="icon" type="image/png" href="<%= image_url('/fav/favicon-128.png')     %>"   sizes="128x128" />
+  <meta name="application-name" content="&nbsp;"/>
+  <meta name="msapplication-TileColor" content="#FFFFFF" />
+  <meta name="msapplication-TileImage" content="<%= image_url('/fav/mstile-144x144.png') %>" />
+  <meta name="msapplication-square70x70logo" content="<%= image_url('/fav/mstile-70x70.png') %>" />
+  <meta name="msapplication-square150x150logo" content="<%= image_url('/fav/mstile-150x150.png') %>" />
+  <meta name="msapplication-wide310x150logo" content="<%= image_url('/fav/mstile-310x150.png') %>" />
+  <meta name="msapplication-square310x310logo" content="<%= image_url('/fav/mstile-310x310.png') %>" />
+
+  <title><%= Figaro.env.pagetitle %></title>
+  <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'rpages', 'data-turbolinks-track': 'reload' %>
+
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  <!-- Sharing -->
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="<%= request.original_url %>" />
+  <meta property="og:image" content="<%= image_url(Figaro.env.default_img) %>" />
+  <meta property="og:locale" content="en_EN" />
+  <meta property="og:site_name" content="<%= Figaro.env.pagetitle %>" />
+
+
+  <meta property="og:title" content="<%= Figaro.env.pagetitle %>"/>
+  <meta property="og:description" content="<%= Figaro.env.default_desc %>" />
+  <meta property="og:locale" content="de_DE" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="<%= request.original_url %>" /> 
+  <meta property="og:image" content="<%= image_url(Figaro.env.default_img) %>" />
+ 
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:url" content="<%= request.original_url %>">
+  <meta name="twitter:title" content="<%= Figaro.env.pagetitle %>">
+  <meta name="twitter:description" content="<%= Figaro.env.default_desc %>">
+  <meta name="twitter:image" content="<%= image_url(Figaro.env.default_img) %>">
+  
+</head>

@@ -1,0 +1,9 @@
+<script>
+   WebFontConfig = document.getElementById('exchange_div').dataset.font;
+
+   (function(d) {
+      var wf = d.createElement('script'), s = d.scripts[0];
+      wf.src = '<%= asset_url "webfontloader", type: :javascript %>';
+      s.parentNode.insertBefore(wf, s);
+   })(document);
+</script>

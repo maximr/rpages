@@ -1,0 +1,5 @@
+<% if item.modifier_is?('onpage') %>
+    <%= link_to item.title, '', class: 'nav-item nav-link active action_link', data: {target: item.clean_output('body')}, style: generate_font_style %>
+<% else %>
+    <%= link_to item.title, item.clean_output('body'), class: link_class, target: item.object_modifier == 'new_page' ? '_blank' : '_self', style: generate_font_style %>
+<% end %>

@@ -1,0 +1,101 @@
+// SASS variable overrides must be declared before loading up Active Admin's styles.
+//
+// To view the variables that Active Admin provides, take a look at
+// `app/assets/stylesheets/active_admin/mixins/_variables.scss` in the
+// Active Admin source.
+//
+// For example, to change the sidebar width:
+// $sidebar-width: 242px;
+
+// Active Admin's got SASS!
+@import "flattened_active_admin/variables";
+@import "flattened_active_admin/mixins";
+@import "flattened_active_admin/base";
+@import "jquery.fileupload-ui";
+@import "active_admin/select2/base";
+
+//@import "active_admin/mixins";
+//@import "active_admin/base";
+@import "font-awesome";
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300i,400,700');
+
+//styles
+@import "admin/content_blocks";
+
+$brand-primary:   #F25F66;
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+a.button, a:link.button, a:visited.button, input[type=button], button, form button {
+  border-radius: 4px;
+}
+
+a, a:link, a:visited {
+  text-decoration: none;
+  color: $brand-primary;
+
+  &:hover {
+    text-decoration: underline;
+    color: darken($brand-primary, 10%);
+  }
+}
+
+.sub_panel {
+  background: darken(#f4f4f4, 10%);
+
+  h3 {
+    background-color: darken(#efefef, 10%);
+    background-image: linear-gradient(180deg, darken(#efefef, 10%), darken(#dfe1e2, 10%));
+    color: darken(#5E6469, 10%);
+  }
+}
+
+.speaker_img_contaier {
+  img {
+    margin: auto;
+    width: 90%;
+    height: 90%;
+    display: block;
+  }
+}
+
+.select_extend {
+  list-style: none;
+
+  &.select_extend--alt {
+    margin-top: 1%;
+  }
+
+  label {
+    width: 100%;
+    display: block;
+  }
+
+  .select2-container {
+    width: 100% !important;
+    margin-top: -0.5%;
+  }
+
+  &.select2_ajax {
+    label{
+      margin-bottom: 1%;
+    }
+
+    select {
+      width: 100%;
+    }
+
+    .select2-selection__rendered {
+      .select2-selection__clear, .select2-selection__select-all {
+        cursor: pointer;
+        float: right;
+        font-weight: bold;
+        margin-top: 8px;
+        margin-right: 10px;
+        font-size: 0.7em;
+      }
+    }
+  }
+}

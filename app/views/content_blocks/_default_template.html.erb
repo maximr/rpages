@@ -1,0 +1,41 @@
+<% if slide.key.present? %>
+  <div class="row d-flex flex-row justify-content-center align-items-center">
+    <div class="col-xs-12 spacer-col">
+      <h2 class="display-2"><%= slide.key %></h2>
+    </div>
+  </div>
+<% end %>
+
+<div class="row d-flex flex-row justify-content-center align-items-center slide_wrapper">
+  <div class="col-xs-12 content_col">
+    <div class="row d-flex flex-row justify-content-center align-items-center">
+      <% if slide.content_position_is?('No Image') %>
+        <div class="col-xs-12 col-sm-11 col-md-10 col-ll-9 content_sub_container text_item">
+          <div class="content_block_content">
+            <%= slide.content.html_safe %>
+          </div>
+        </div>
+      <% else %>
+        <% if slide.content_position_is?('Left Image') %>
+          <div class="col-xs-12 col-sm-11 col-md-8 col-ll-6 content_sub_container image_item">
+            <%= image_tag(slide.content_image.url(:lg)) %>
+          </div>
+          <div class="col-xs-12 col-sm-11 col-md-10 col-ll-6 content_sub_container text_item">
+            <div class="content_block_content">
+              <%= slide.content.html_safe %>
+            </div>
+          </div>
+        <% else %>
+          <div class="col-xs-12 col-sm-11 col-md-10 col-ll-6 content_sub_container text_item">
+            <div class="content_block_content">
+              <%= slide.content.html_safe %>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-11 col-md-8 col-ll-6 content_sub_container image_item">
+            <%= image_tag(slide.content_image.url(:lg)) %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <% cache [@sett_main, @sett_meta] do %>
+    <% if @sett_main && @sett_meta %>
+      <%= render 'setts/header', default: @sett_main, meta: @sett_meta %>
+    <% else %>
+      <%= render 'partials/header' %>
+    <% end %>
+  <% end %>
+
+  <div style="display:none;" id="exchange_div"
+    data-font="<%= generate_style_data %>"
+    data-counter="<%= asset_url "jquery.counterup.min", type: :javascript %>"
+    data-particles="<%= asset_url "particles.min", type: :javascript %>"
+    data-flip="<%= asset_url "jquery.flip.min", type: :javascript %>"
+    data-vide="<%= asset_url "jquery.vide", type: :javascript %>"
+    data-fitvids="<%= asset_url "jquery.fitvids", type: :javascript %>"
+  ></div>
+
+  <body data-device="<%= get_device_data %>" style="<%= generate_font_style %>">
+
+    <% cache [@sett_main, @sett_nav] do %>
+      <% if @sett_main && @sett_nav %>
+        <%= render 'setts/nav', default: @sett_main, nav: @sett_nav %>
+      <% else %>
+        <%= render 'partials/nav' %>
+      <% end %>
+    <% end %>
+
+    <%= yield %>
+
+    <%= render 'partials/webfont_loader' %>
+    <%= render 'partials/bootstrap_containers', cached: true %>
+
+    <% cache @sett_footer do %>
+      <% if @sett_footer %>
+        <%= render 'setts/footer', footer: @sett_footer %>
+      <% else %>
+        <%= render 'partials/footer' %>
+      <% end %>
+    <% end %>
+
+    <% if Rails.env == 'production' %>
+      <% cache @sett_track do %>
+        <% if @sett_track %>
+          <%= render 'setts/tracking', tracker: @sett_track, cached: true %>
+        <% else %>
+          <% if Rails.env == 'production' %>
+            <%= render 'partials/tracking/google_analytics', id: Figaro.env.google_analytics_id %>
+            <%= render 'partials/tracking/hubspot', id: Figaro.env.hubspot_id %>
+            <%= render 'partials/tracking/facebook', id: Figaro.env.facebook_id %>
+            <%= render 'partials/tracking/google_adwords', id: Figaro.env.google_adwords_id %>
+            <%= render 'partials/tracking/mouseflow', id: Figaro.env.mouseflow_id %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+
+    <%= render 'components/modal' %>
+    
+    <%# render 'components/tab_slider' %>
+    <%# render 'partials/debug' %>
+  </body>
+</html>

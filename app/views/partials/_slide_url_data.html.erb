@@ -1,0 +1,116 @@
+<% object ||= local_assigns[:object] %>
+<% the_class ||= local_assigns[:klass] %>
+<% the_method ||= local_assigns[:method] %>
+<% selector ||= local_assigns[:id] ? '#' : '.' %>
+
+<style media="screen">
+  <% if !browser.device.mobile? %>
+    <%= "#{selector}#{the_class}" %> { background-image: url(<%= object.send(method).url(:xs) %>) !important; }
+
+    @media (min-width: 544px) {
+      <%= "#{selector}#{the_class}" %> { background-image: url(<%= object.send(method).url(:sm) %>) !important; }
+    }
+
+    @media (min-width: 768px) {
+      <%= "#{selector}#{the_class}" %> { background-image: url(<%= object.send(method).url(:md) %>) !important; }
+    }
+
+    @media (min-width: 1200px) {
+      <%= "#{selector}#{the_class}" %> { background-image: url(<%= object.send(method).url(:ll) %>) !important; }
+    }
+
+    @media (min-width: 1400px) {
+      <%= "#{selector}#{the_class}" %> { background-image: url(<%= object.send(method).url(:hd) %>) !important; }
+    }
+
+    @media (min-width: 2200px) {
+      <%= "#{selector}#{the_class}" %> { background-image: url(<%= object.send(method).url(:xl) %>) !important; }
+    }
+  <% else %>
+    <%= "#{selector}#{the_class}" %> { background-image: url(<%= object.send(method).url(:mobile_xs) %>) !important; }
+
+
+    @media only screen
+    and (min-device-width : 320px)
+    and (max-device-width : 480px) {
+      <%= "#{selector}#{the_class}" %> { background-image: url(<%= object.send(method).url(:mobile_xs) %>) !important; }
+    }
+     
+    /* Smartphones (landscape) ----------- */
+    @media only screen
+    and (min-width : 321px) {
+      <%= "#{selector}#{the_class}" %> { background-image: url(<%= object.send(method).url(:xs) %>) !important; }
+    }
+     
+    /* Smartphones (portrait) ----------- */
+    @media only screen
+    and (max-width : 320px) {
+      <%= "#{selector}#{the_class}" %> { background-image: url(<%= object.send(method).url(:mobile_xs) %>) !important; }
+    }
+     
+    /* iPads (portrait and landscape) ----------- */
+    @media only screen
+    and (min-device-width : 768px)
+    and (max-device-width : 1024px) {
+      <%= "#{selector}#{the_class}" %> { background-image: url(<%= object.send(method).url(:mobile_xl) %>) !important; }
+    }
+     
+    /* iPads (landscape) ----------- */
+    @media only screen
+    and (min-device-width : 768px)
+    and (max-device-width : 1024px)
+    and (orientation : landscape) {
+      <%= "#{selector}#{the_class}" %> { background-image: url(<%= object.send(method).url(:tablet_xl) %>) !important; }
+    }
+     
+    /* iPads (portrait) ----------- */
+    @media only screen
+    and (min-device-width : 768px)
+    and (max-device-width : 1024px)
+    and (orientation : portrait) {
+      <%= "#{selector}#{the_class}" %> { background-image: url(<%= object.send(method).url(:mobile_xl) %>) !important; }
+    }
+     
+    /* iPhone 5 (portrait &amp; landscape)----------- */
+    @media only screen
+    and (min-device-width : 320px)
+    and (max-device-width : 568px) {
+      <%= "#{selector}#{the_class}" %> { background-image: url(<%= object.send(method).url(:ll) %>) !important; }
+    }
+     
+    /* iPhone 5 (landscape)----------- */
+    @media only screen
+    and (min-device-width : 320px)
+    and (max-device-width : 568px)
+    and (orientation : landscape) {
+      <%= "#{selector}#{the_class}" %> { background-image: url(<%= object.send(method).url(:ll) %>) !important; }
+    }
+
+    /* iPhone 5 (portrait)----------- */
+    @media only screen
+    and (min-device-width : 320px)
+    and (max-device-width : 568px)
+    and (orientation : portrait) {
+      <%= "#{selector}#{the_class}" %> { background-image: url(<%= object.send(method).url(:mobile_ll) %>) !important; }
+    }
+
+    /* iPhone 6, Galaxy S5 ----------- */
+    @media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
+      <%= "#{selector}#{the_class}" %> { background-image: url(<%= object.send(method).url(:ll) %>) !important; }
+    }
+
+    @media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
+      <%= "#{selector}#{the_class}" %> { background-image: url(<%= object.send(method).url(:mobile_xl) %>) !important; }
+    }
+
+    /* iPhone 6+ ----------- */
+    @media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
+      <%= "#{selector}#{the_class}" %> { background-image: url(<%= object.send(method).url(:ll) %>) !important; }
+    }
+
+    @media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
+      <%= "#{selector}#{the_class}" %> { background-image: url(<%= object.send(method).url(:mobile_xl) %>) !important; }
+    }
+    
+  <% end %>
+</style>

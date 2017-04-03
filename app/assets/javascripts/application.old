@@ -1,0 +1,246 @@
+//= require jquery
+//= require jquery_ujs
+//= require tether
+
+//= require bootstrap/util
+//= require bootstrap/alert
+//= require bootstrap/button
+//= require bootstrap/collapse
+//= require bootstrap/dropdown
+
+// require turbolinks
+// require trianglify.min
+// require snap.svg-min
+
+//= require jquery.scrollstop
+//= require withinviewport
+//= require jquery.withinviewport
+//= require jquery.fitvids
+//= require jquery.mobile-events.min
+//= require jquery.countdown.min
+
+//custom
+
+//= require reveal_slider
+//= require click-expand
+
+$.event.special.scrollstop.latency = 150;
+
+$.fn.extend({
+  animateCss: function (animationName, funct) {
+    var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+
+    if(!$(this).hasClass('animated')) {
+      this.addClass('animated ' + animationName).one(animationEnd, function() {
+        $(this).removeClass('animated ' + animationName);
+        if($.isFunction(funct)) funct($(this));
+      });
+    }
+  }
+});
+
+jQuery.loadScript = function (url, callback) {
+  jQuery.ajax({
+      url: url,
+      dataType: 'script',
+      success: callback,
+      async: true
+  });
+}
+
+var customSlideEvents = function(slide) {
+  slide.on("polylogic:uncover", function( event ) {
+    if(slide.find(".reveal_container").size() > 0) revealSlider(slide.find(".reveal_container")).init;
+    if(slide.find(".video_iframe_container").size() > 0) $(".video_iframe_container").fitVids();
+  });
+}
+
+var xingIframeStyle = function() {
+  $.loadScript('https://YOFM2016-modules.xing-events.com/resources/js/amiandoExport.js');
+}
+
+function mapInit() {
+  var map_container = $('#map_container');
+
+  if(map_container.length && map_container.data("coordinates")) {
+
+    var rawLatLng = map_container.data("coordinates").split(',');
+    var myLatLng = {lat: parseFloat(rawLatLng[0]), lng: parseFloat(rawLatLng[1])};
+
+    $.loadScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyBGnK01wszOgXCuh8Vm_CDIp9wAW5VzHBc', function(){
+      setTimeout(function(){
+        var styles = [
+          {
+            featureType: "all",
+            stylers: [
+              { hue: "#fe256d" },
+              { saturation: -80 }
+            ]
+          },{
+            featureType: "road.arterial",
+            elementType: "geometry",
+            stylers: [
+              { hue: "#fe256d" },
+              { saturation: 100 }
+            ]
+          },{
+            featureType: "poi.business",
+            elementType: "labels",
+            stylers: [
+              { visibility: "off" }
+            ]
+          }
+        ];
+
+        var styledMap = new google.maps.StyledMapType(styles, {name: "YOTX Map"});
+
+        map = new google.maps.Map(document.getElementById('map_container'), {
+          center: myLatLng,
+          zoom: 15,
+          scrollwheel: false,
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+          disableDefaultUI: true
+        });
+
+        // Set marker on location
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map
+        });
+
+        map.mapTypes.set('map_style', styledMap);
+        map.setMapTypeId('map_style');
+
+        google.maps.event.trigger(map, "resize");
+      }, 800);
+    });
+
+  }
+}
+
+function ctaEvent() {
+  $(".btn-cta-main").on("click", function(e) {
+    $('html, body').animate({
+        scrollTop: $(".ticket_slide").offset().top
+    }, 2000);
+    e.preventDefault();
+  });
+}
+
+function browserCorrections() {  
+  $('.slide_pattern').removeClass("slide_pattern slide_pattern_with_image").find('.pattern_content_container').animateCss('fadeIn');
+
+  $(".slide").each(function(s) {
+    var slide = $(this);
+    customSlideEvents(slide);
+    slide.trigger("polylogic:uncover");
+    clickExpand(slide.find('.speaker_row')).init;
+    clickExpand(slide.find('.talk_col')).init;
+  });
+}
+
+function updateIframes() {
+  var frames = document.getElementsByTagName("iframe");
+
+  for (var i = frames.length - 1; i >= 0; i--) {
+    var u = frames[i].dataset.src;
+    frames[i].setAttribute("src", u);
+  }
+}
+
+function navActions() {
+  var toggle = $('#navtoggle:visible');
+
+  if(toggle.size() > 0) {
+    toggle.collapse('hide');
+    $(".navbar .navbar-nav").addClass('collapse');
+  } else {
+    toggle.collapse('show');
+    $(".navbar .navbar-nav").removeClass('collapse');
+  }
+
+  $(".navbar .nav-item").on("click", function(e) {
+    var item = $(this);
+
+    if(toggle.size() > 0 && !item.hasClass("dropdown")) {
+      console.log(item.attr("class"));
+      toggle.collapse('hide');
+      $('.navbar .navbar-nav').removeClass('in');
+    }
+
+    if($(this).data('target')) {
+      $('html, body').animate({
+        scrollTop: $('.' + $(this).data('target')).offset().top
+      }, 2000);
+    } else {
+      return true;
+    }
+    e.preventDefault();
+  });
+}
+
+function updateTalkHeights() {
+  var maxHeight = Math.max.apply(null, $(".talk-item").map(function ()
+  {
+    return $(this).outerHeight();
+  }).get());
+
+  $(".talk-item").css({height: maxHeight + 'px'});
+}
+
+function resizedw(){
+  if(!$.browserData.mobile && ($.windowLastWidth != window.innerWidth || $.windowLastHeight != window.innerHeight)) {
+    if(window.screen.availHeight > window.innerHeight) {
+      $.windowLastWidth = window.innerWidth;
+      $.windowLastHeight = window.innerHeight;
+      window.location.reload();
+    }
+  }
+}
+
+function activateCountdown() {
+  var the_clock = $('#clock');
+
+  if(the_clock.size() > 0) {
+    the_clock.countdown(the_clock.data('countdown-to')).on('update.countdown', function(event) {
+      var $this = $(this).html(event.strftime(''
+        + '<span class="number">%-m</span> <span class="word">month%!m</span> '
+        + '<span class="number">%-d</span> <span class="word">day%!d</span> '
+        + '<span class="number">%H</span> <span class="word">hr</span> '
+        + '<span class="number">%M</span> <span class="word">min</span> '
+        + '<span class="number">%S</span> <span class="word">sec</span>'));
+    });
+  }
+}
+
+$(document).on("ready page:load", function() {
+
+  $.browserData = $("body").data('device');
+  $.patternCellSize = 100;
+  browserCorrections();
+
+  ctaEvent();
+
+  window.requestAnimationFrame(function() {
+    updateIframes();
+    xingIframeStyle();
+    mapInit();
+    updateTalkHeights();
+    navActions();
+    activateCountdown();
+
+    window.addEventListener("orientationchange", function() {
+      window.location.reload();
+    }, false);
+
+    var reload;
+
+    $.windowLastWidth = window.innerWidth;
+    $.windowLastHeight = window.innerHeight;
+
+    window.onresize = function(){
+      clearTimeout(reload);
+      reload = setTimeout(resizedw, 500);
+    };
+  });
+});

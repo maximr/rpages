@@ -1,0 +1,37 @@
+<footer class="row d-flex flex-row justify-content-center align-items-center">
+  <div class="col-xs-12 col-sm-11 col-md-10 col-lg-8 footer_content">
+
+    <% footer.get_objects.each do |row| %>
+      <% if row.type_is?('row') %>
+        <% if row.modifier_is?('text_row') %>
+          <%= render 'setts/partials/footer_text_row', row: row %>
+        <% elsif row.modifier_is?('content_row') %>
+          <%= render 'setts/partials/footer_content_row', row: row %>
+        <% end %>
+      <% elsif row.type_is?('collection') %>
+      
+        <% if row.modifier_is?('social_links_row') %>
+          <span class="footer_block social_links">
+            <% row.get_polymorphic_object(row.object_value).get_objects.each do |x| %>
+              <%= render 'setts/partials/footer_social_links_item', item: x %>
+            <% end %>
+          </span>
+        <% elsif row.modifier_is?('links_row') %>
+          <span class="footer_block footer_pages">
+            <% the_links = row.get_polymorphic_object(row.object_value).get_objects %>
+            <% the_links.each_with_index do |x, i| %>
+              <%= render 'setts/partials/footer_links_item', item: x %> <%= '|' if (i+1) < the_links.count %>
+            <% end %>
+          </span>
+        <% end %>
+
+      <% end %>
+    <% end %>
+  </div>
+
+  <span class="rev_container">
+    <%= link_to('http://www.rev.digital', target: 'blank', alt: 'a part of the digital revolution', title: 'a part of the digital revolution') do %>
+      <%= image_tag('/images/icon_rev_white_150px.png') %>
+    <% end %>
+  </span>
+</footer>

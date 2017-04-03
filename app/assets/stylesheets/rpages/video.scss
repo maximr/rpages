@@ -1,0 +1,140 @@
+$default-filter: blur(0.5vh);
+$default-filter-min-one: blur(0.5vh) invert(10%) contrast(110%);
+$default-filter-min-two: blur(0.5vh) invert(30%) contrast(150%);
+$default-filter-min-three: blur(0.5vh) invert(50%) contrast(170%);
+$default-filter-min-four: blur(0.5vh) invert(80%) contrast(100%);
+$filter-timing: cubic-bezier(.99,.15,.37,.99);
+
+.slide .video_prepend {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  &.slide--vertial_bottom {
+    div {
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    }
+  }
+
+  &.slide--vertial_top {
+    div {
+      clip-path: polygon(0 10%, 100% 0, 100% 100%, 0% 100%);
+    }
+  }
+
+  video {
+    filter: blur(0.5vh);
+    animation: flickerVideo 10s linear infinite;
+
+    &.paused {
+      animation: none;
+    }
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    display: flex;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(to bottom, rgba(0,0,0, 0.7) 0%, rgba(0,0,0, 0.5) 100%);
+  }
+}
+
+@keyframes flickerVideo {
+  from {
+    filter: $default-filter;
+  }
+  4% {
+    filter: $default-filter;
+  }
+  6% {
+    filter: $default-filter-min-one;
+  }
+  8% {
+    filter: $default-filter-min-two;
+  }
+  10% {
+    filter: $default-filter-min-one;
+  }
+  11% {
+    filter: $default-filter;
+  }
+  12% {
+    filter: $default-filter-min-three;
+  }
+  14% {
+    filter: $default-filter-min-two;
+  }
+  16% {
+    filter: $default-filter-min-four;
+  }
+  17% {
+    filter: $default-filter-min-two;
+  }
+  19% {
+    filter: $default-filter;
+  }
+  20% {
+    filter: $default-filter;
+  }
+  24% {
+    filter: $default-filter;
+  }
+  26% {
+    filter: $default-filter-min-four;
+  }
+  28% {
+    filter: $default-filter;
+  }
+  38% {
+    filter: $default-filter-min-one;
+  }
+  40% {
+    filter: $default-filter;
+  }
+  42% {
+    filter: $default-filter-min-three;
+  }
+  44% {
+    filter: $default-filter;
+  }
+  46% {
+    filter: $default-filter;
+  }
+  56% {
+    filter: $default-filter;
+  }
+  58% {
+    filter: $default-filter;
+  }
+  60% {
+    filter: $default-filter;
+  }
+  68% {
+    filter: $default-filter;
+  }
+  70% {
+    filter: $default-filter-min-three; /*peak*/
+  }
+  72% {
+    filter: $default-filter;
+  }
+  93% {
+    filter: $default-filter;
+  }
+  95% {
+    filter: $default-filter-min-three; /*peak*/
+  }
+  97% {
+    filter: $default-filter;
+  }
+  to {
+    filter: $default-filter;
+  }
+}
+

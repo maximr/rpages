@@ -1,0 +1,16 @@
+<nav class="navbar navbar-full navbar-fixed-top bg-inverse bg-faded" role="navigation">
+  
+    <% klass = is_mobile? ? "" : 'hidden-ll-up' %>
+
+    <!-- removed for now
+    <%= link_to('', class: "navbar-toggler pull-xs-right #{klass}", data: {toggle: "collapse", target: "#navItemsContainer"}, 
+                    aria: {controls: "navItemsContainer", expanded: true, label: "Toggle nav"}, id: "navtoggle") do %>
+      <%= fa_icon "bars 2x" %> 
+    <% end %> -->
+
+    <%= link_to "", '/', class: "navbar-brand" %>
+
+    <div class="nav navbar-nav collapse" id="navItemsContainer" >
+        
+    </div>
+</nav>

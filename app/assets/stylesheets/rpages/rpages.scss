@@ -1,0 +1,191 @@
+/*
+  Rpages Styles - made by rev // rev.digital
+*/
+
+@import "variables";
+
+//----------------------Bootstrap components -----------------
+// Core variables and mixins
+@import "bootstrap/custom";
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+
+// Reset and dependencies
+@import "bootstrap/normalize";
+@import "bootstrap/print";
+
+// Core CSS
+@import "bootstrap/reboot";
+@import "bootstrap/type";
+@import "bootstrap/images";
+@import "bootstrap/code";
+@import "bootstrap/grid";
+@import "bootstrap/tables";
+@import "bootstrap/forms";
+@import "bootstrap/buttons";
+
+// Components
+@import "bootstrap/dropdown";
+@import "bootstrap/nav";
+@import "bootstrap/navbar";
+@import "bootstrap/jumbotron";
+@import "bootstrap/card";
+
+// Components w/ JavaScript
+@import "bootstrap/modal";
+@import "bootstrap/carousel";
+
+// Utility classes
+@import "bootstrap/utilities";
+
+//----------------------/Bootstrap components -----------------
+
+@import "font-awesome";
+@import "vendor/animate";
+@import "vendor/jquery.tabSlideOut";
+
+@import "./mixins";
+@import "./defaults";
+@import "./nav";
+@import "./footer";
+
+@import "./slides";
+
+//include all the components
+@import "./components/*";
+
+@import "./carousel";
+@import "./map";
+@import "./video";
+@import "./external";
+
+@import "./reveal";
+
+.btn-primary {
+  background-color: lighten($brand-primary, 10%);
+  border-color: lighten($brand-primary, 10%);
+}
+
+a {
+  color: darken($brand-primary, 10%);
+}
+
+.navbar {
+  //position: fixed;
+  padding: 1em;
+  padding-top: 1.1em;
+  padding-bottom: .3em;
+
+  &:before {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 70%, transparent 100%);
+  }
+
+  &.navbar--no-trans {
+    &:before {
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.9) 70%, rgba(0, 0, 0, 0.5) 100%);
+    }
+  }
+
+  .navbar-toggler {
+    float: right;
+  }
+
+  .nav.navbar-nav.collapse, .navbar .nav.navbar-nav.collapsing {
+    margin-top: 6rem;
+  }
+
+  @include media-breakpoint-down('md') { 
+    .navbar-brand { 
+      padding: 0;
+    }
+  }
+
+  @include media-breakpoint-down('sm') { 
+    .navbar-brand { 
+      font-size: 2rem;
+    }
+  }
+}
+
+.slide-out {
+  max-width: 25vw;
+  padding: 0.5rem 1rem;
+
+  p {
+    margin-bottom: 0;
+    font-size: 1.2rem;
+
+    &.small {
+      font-size: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    &.medium {
+      margin-top: 0.2rem;
+      font-size: 1rem;
+    }
+
+    & + p {
+      margin-bottom: 0.1rem;
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
+  }
+
+  @include media-breakpoint-down('ll') { 
+    max-width: 35vw;
+  }
+
+  @include media-breakpoint-down('md') { 
+    max-width: 85vw;
+  }
+
+  .ui-slideouttab-handle {
+    background: none;
+
+    &:before {
+      position: absolute;
+      content: '';
+      display: block;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: $brand-gray;
+      z-index: -1;
+      opacity: 0.4;
+    }
+
+    &:hover, &:visited {
+      color: white;
+      text-decoration: none;
+    }
+  }
+}
+
+footer.row {
+  background: $brand-black;
+  position: relative;
+  z-index: 1;
+
+  .footer_block {
+    //color: darken($gray-dark, 15%);
+    margin-bottom: 0.1%;
+    font-size: 1.1rem;
+
+    a {
+      color: darken($brand-primary, 10%);
+    }
+
+    &.footer_contact {
+      font-size: 1.4rem;
+    }
+
+    &.footer_pages {
+      margin-bottom: 0;
+      margin-top: 2%;
+    }
+  }
+}

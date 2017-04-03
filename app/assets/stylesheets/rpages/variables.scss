@@ -1,0 +1,34 @@
+//bootstrap variables 
+$enable-flex:     true;
+//$brand-primary:   #54a3f3;//darken(#cae35e, 21%);
+//$brand-secondary: #2a5982;
+$enable-shadows:  false;
+$brand-gray: #737371;
+$gray-lighter: #c5beba;
+$gray-dark: #646262;
+$brand-black: #010307;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 544px,
+  md: 768px,
+  lg: 992px,
+  ll: 1300px,
+  xl: 1500px
+);
+
+$container-max-widths: (
+  sm: 576px,
+  md: 720px,
+  lg: 940px,
+  ll: 1200px,
+  xl: 1600px
+);
+
+//custom variables
+
+$display-1: 2.5rem;
+$display-2: 1.9rem;
+$display-3: 1.4rem;
+$display-4: 1.3rem;
+$display-5: 1.2rem;

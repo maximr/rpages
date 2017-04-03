@@ -1,0 +1,28 @@
+.slide.media_slide {
+  
+  .slide_content_container {
+    padding: 0;
+  }
+
+  .video_iframe_container {
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    min-height: 320px;
+
+    .video_trailer_frame {
+      min-height: 320px;
+      width: 100%;
+    }
+
+    @media screen and (max-height: 810px) { 
+      height: auto;
+      margin: 3% 0;
+
+      .video_trailer_frame {
+        width: 100%;
+      }
+    }
+  }
+}

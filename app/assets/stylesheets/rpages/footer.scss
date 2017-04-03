@@ -1,0 +1,133 @@
+footer.row {
+  background-color: #100806;
+  padding: 4vh 1vw;
+  overflow-x: hidden;
+  width: 100%;
+  margin: 0;
+  position: relative;
+
+  .footer_block {
+    font-family: 'OpenSans', sans-serif;
+    font-weight: 300;
+    font-size: 1.1rem;
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1.5%;
+    color: white;
+
+    h2 {
+      margin-bottom: 3%;
+    }
+
+    &.social_links {
+      a {
+        padding: 0 0.5vw;
+      }
+    }
+  }
+
+  a, a:visited {
+    color: lighten($brand-primary, 10%);
+    text-decoration: none;
+
+    &:hover {
+      color: lighten($brand-primary, 30%);
+      text-decoration: none;
+    }
+  }
+
+  .signup_form {
+    padding: 2% 0;
+
+    .display-3 {
+      font-size: 1.1rem;
+    }
+  }
+
+  #mc_embed_signup .mc-field-group {
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    text-overflow: ellipsis;
+
+    @include media-breakpoint-down('ll') { 
+      width: 60%;
+    }
+
+    @include media-breakpoint-down('md') { 
+      width: 80%;
+    }
+
+    @include media-breakpoint-down('sm') { 
+      width: 100%;
+    }
+  }
+
+  #mc_embed_signup .mc-field-group .email {
+    background: none;
+    border: none;
+    border-bottom: 2px solid white;
+    width: 75%;
+    color: white;
+    line-height: 150%;
+    font-size: 1.4rem;
+    font-weight: 100;
+    padding-left: 1.5%;
+    padding-bottom: 0.4%;
+    outline: none;
+    text-overflow: ellipsis;
+  }
+
+  #mc_embed_signup .mc-field-group .email:focus {
+    border-bottom: 2px solid $brand-primary;
+  }
+
+  #mc_embed_signup .mc-field-group .button {
+    font-size: 90%;
+    width: 20%;
+    padding: 1.5% 0;
+    background: white;
+    border: none;
+    text-transform: uppercase;
+    color: #444343;
+    font-weight: bold;
+    color: $brand-primary;
+    outline: none;
+    text-overflow: ellipsis;
+    font-size: 0.8rem;
+  }
+
+  #mc_embed_signup .mc-field-group .button:hover {
+    background: $brand-primary;
+    color: white;
+  }
+
+  #mc_embed_signup div.mce_inline_error {
+    margin: 2% 5% 0 5% !important;
+    background-color: #D66988 !important;
+  }
+
+  .rev_container {
+    position: absolute;
+    right: 2%;
+    bottom: 5%;
+
+    img {
+      width: 2.5rem;
+
+      @include media-breakpoint-down('ll') { 
+        width: 1.5rem;
+      }
+    }
+
+    @include media-breakpoint-down('sm') { 
+      position: relative;
+      padding-top: 5%;
+
+      img {
+        width: 1.1rem;
+      }
+    }
+  }
+}

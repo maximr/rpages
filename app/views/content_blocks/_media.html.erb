@@ -1,0 +1,43 @@
+<% if slide.key.present? %>
+  <div class="row d-flex flex-row justify-content-center align-items-center">
+    <div class="col-xs-12 spacer-col">
+      <h2 class="display-2"><%= slide.key %></h2>
+    </div>
+  </div>
+<% end %>
+
+<div class="row row--stat d-flex flex-row justify-content-center align-items-baseline">
+  <% slide.get_custom_content_items.each do |block| %>
+    <div class="media-item-container fix-col <%= slide.get_section_cols %>">
+      <% if block['head'] == 'youtube' %>
+         <div class="video_iframe_container">
+            <iframe class="video_trailer_frame" src="" data-src="<%= "#{strip_tags(block['desc'])}?modestbranding=0&rel=0&showinfo=0&color=white" %>" frameborder="0" allowfullscreen></iframe>
+          </div>
+      <% elsif block['head'].to_s.include?('image') %>
+        <div class="media-item">
+          <% if block['img'].present? %>
+            <%= image_tag(slide.get_image_url(block['img']) )%>
+          <% end %>
+          <% if block['desc'].present? %>
+            <%= block['desc'].html_safe %>
+          <% end %>
+        </div>
+      <% elsif block['head'].to_s.include?('card') %>
+        <div class="media-item card">
+          <% if block['img'].present? %>
+            <%= image_tag(slide.get_image_url(block['img']), class: 'card-img-top')%>
+          <% end %>
+          <div class="card-block">
+            <% if block['desc'].present? %>
+              <h4 class="card-title" style="color:#666;"><%= block['desc'].html_safe %></h4>
+            <% end %>
+
+            <% if block['body'].present? %>
+              <span class="card-text" style="color:#666;"><%= block['body'].html_safe %></span>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

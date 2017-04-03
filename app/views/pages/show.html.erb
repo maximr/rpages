@@ -1,0 +1,11 @@
+<div class="container-fluid site_main_container">
+  <% if @slides.present? %>
+    <% @slides.each do |slide| %>
+      <%= render 'content_blocks/slide', slide: slide, cached: true %>
+    <% end %>
+  <% else %>
+    <section class="slide">
+      <h1><%= @page.name %></h1>
+    </section>
+  <% end %>
+</div>

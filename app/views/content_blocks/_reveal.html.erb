@@ -1,0 +1,36 @@
+<% if slide.key.present? %>
+  <div class="row d-flex flex-row justify-content-center align-items-center">
+    <div class="col-xs-12 spacer-col">
+      <h2 class="display-2"><%= slide.key %></h2>
+    </div>
+  </div>
+<% end %>
+
+<div class="reveal_wrapper">
+  <div class="row d-flex flex-row justify-content-center align-items-baseline reveal_container" data-reveal-settings="<%= get_reveal_settings(slide) %>">
+    <% slide.get_custom_content_items.each_with_index do |block, i| %>
+      <% if slide.is_normal_link? %>
+        <%= link_to(strip_tags(block['body'])) do %>
+          <div class="<%= slide.get_section_cols %> reveal_item_container fix-col fix-col-x2" data-reveal-item-data="<%= generate_reveal_data(slide, block) %>">
+            <span class="reveal_item reveal_item--image" data-reveal-id="reveal_img" data-reveal-animation="<%= slide.template_animation_in %>"></span>
+            <span class="reveal_item reveal_item--head" data-reveal-id="reveal_head" data-reveal-animation="<%= slide.template_animation_in %>"></span>
+            <span class="reveal_item reveal_item--desc" data-reveal-id="reveal_desc" data-reveal-animation="<%= slide.template_animation_in %>"></span>
+          </div>
+        <% end %>
+      <% elsif slide.is_inline_link? %>
+        <div class="<%= slide.get_section_cols %> reveal_item_container popup-trigger fix-col fix-col-x2" data-toggle="modal" data-target="#main_modal" 
+             data-reveal-item-data="<%= generate_reveal_data(slide, block) %>" data-aparams="<%= {num: i, id: slide.id}.to_json %>">
+          <span class="reveal_item reveal_item--image" data-reveal-id="reveal_img" data-reveal-animation="<%= slide.template_animation_in %>"></span>
+          <span class="reveal_item reveal_item--head item-title" data-reveal-id="reveal_head" data-reveal-animation="<%= slide.template_animation_in %>"></span>
+          <span class="reveal_item reveal_item--desc" data-reveal-id="reveal_desc" data-reveal-animation="<%= slide.template_animation_in %>"></span>
+        </div>
+      <% else %>
+        <div class="<%= slide.get_section_cols %> reveal_item_container fix-col fix-col-x2" data-reveal-item-data="<%= generate_reveal_data(slide, block) %>">
+          <span class="reveal_item reveal_item--image" data-reveal-id="reveal_img" data-reveal-animation="<%= slide.template_animation_in %>"></span>
+          <span class="reveal_item reveal_item--head" data-reveal-id="reveal_head" data-reveal-animation="<%= slide.template_animation_in %>"></span>
+          <span class="reveal_item reveal_item--desc" data-reveal-id="reveal_desc" data-reveal-animation="<%= slide.template_animation_in %>"></span>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

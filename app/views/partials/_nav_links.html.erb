@@ -1,0 +1,21 @@
+<% the_ids = @office.present? ? Office.is_active.pluck(:id) - [@office.id] : Office.is_active.pluck(:id) %>
+
+<% if the_ids.present? %>
+    <% if the_ids.count > 1 %>
+        <div class="nav-item dropdown">
+            <%= link_to("", data: {toggle: "dropdown"}, role: "button", aria: {haspopup: true, expanded: false}, class: 'nav-link nav-dropdown') do %>
+                <%= type == :office ? "PRAXEN" : "Mehr" %>
+                <%= fa_icon "caret-down" %> 
+            <% end %>
+
+            <div class="dropdown-menu">
+                <% Office.where(id: the_ids).find_each do |other_event| %>
+                    <%= link_to other_event.name, show_office_path(other_event), class: 'nav-link dropdown-item' %>
+                <% end %>
+            </div>
+        </div>
+    <% else %>
+        <% other_office = Office.where(id: the_ids).first %>
+        <%= link_to other_office.name, show_office_path(other_office), class: 'nav-item nav-link' %>
+    <% end %>
+<% end %>

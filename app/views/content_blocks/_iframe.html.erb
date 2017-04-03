@@ -1,0 +1,20 @@
+<% if slide.key.present? %>
+  <div class="row d-flex flex-row justify-content-center align-items-center">
+    <div class="col-xs-12 spacer-col">
+      <h2 class="display-2"><%= slide.key %></h2>
+    </div>
+  </div>
+<% end %>
+
+<div class="row d-flex flex-row justify-content-center align-items-center">
+  <% slide.get_custom_content_items.each do |block| %>
+    <iframe src="" data-src="<%= block['head'] %>" 
+            frameborder="0" height="650px" id="<%= strip_tags block['desc'] %>" allowtransparency="true" class="iframe"></iframe>
+
+    <% if block['body'].present? %>
+      <script type="text/javascript">
+        <%= strip_tags(block['body']).strip.html_safe %>
+      </script>
+    <% end %>
+  <% end %>
+</div>

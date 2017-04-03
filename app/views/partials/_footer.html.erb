@@ -1,0 +1,39 @@
+<footer class="row flex-items-xs-middle flex-items-xs-center">
+  <div class="col-xs-12 col-sm-11 col-md-10 col-lg-8 footer_content">
+
+    <span class="footer_block footer_contact"><h2><%= ENV['pagetitle'] %></h2></span>
+
+    <span class="footer_block social_links">
+      <%= link_to 'https://twitter.com/HolodeckVR', target: 'blank' do %>
+        <%= fa_icon "twitter 2x" %> 
+      <% end %>
+      <%= link_to 'https://www.instagram.com/holodeckvr/', target: 'blank' do %>
+        <%= fa_icon "instagram 2x" %> 
+      <% end %>
+      <%= link_to 'https://www.facebook.com/HolodeckVR.co', target: 'blank' do %>
+        <%= fa_icon "facebook 2x" %> 
+      <% end %>
+      <%# link_to 'https://www.youtube.com/channel/HolodeckVR', target: 'blank' do %>
+        <%# fa_icon "youtube 2x" %> 
+      <%# end %>
+      <%= link_to "mailto:#{ENV['default_mail']}", target: 'blank' do %>
+        <%= fa_icon "envelope 2x" %> 
+      <% end %>
+    </span>
+
+    <span class="footer_block footer_pages">
+      <% counter = 0 %>
+
+      <% Page.footer_pages.find_each do |page| %>
+        <%= "#{'|' unless counter == 0}" %> <%= link_to page.name, "/#{page.slug}" %>
+        <% counter += 1 %>
+      <% end %>
+    </span>
+  </div>
+
+  <span class="rev_container">
+    <%= link_to('http://www.rev.digital', target: 'blank', alt: 'a part of the digital revolution', title: 'a part of the digital revolution') do %>
+      <%= image_tag('/images/icon_rev_white_150px.png') %>
+    <% end %>
+  </span>
+</footer>

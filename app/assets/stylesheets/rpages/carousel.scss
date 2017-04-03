@@ -1,0 +1,23 @@
+.background-image-carousel {
+  .carousel-background-image {
+    display: none;
+    width: 100vw;
+
+    &.active {
+      display: flex;
+    }
+  }
+
+  .carousel-indicators li {
+    width: 1.5vh;
+    height: 1vh;
+  }
+
+  h1 {
+    color: $brand-primary;
+  }
+
+  .carousel-control-prev, .carousel-control-next {
+    z-index: 9999;
+  }
+}

@@ -1,0 +1,64 @@
+<head>
+  <!-- Required meta tags always come first -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, maximum-scale=1.0, user-scalable=0">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+  <% sett_icon = default.get_icons.present? ? default.get_icons.first.icon : nil %>
+  <% title = meta.get_x('pagetitle') %>
+  <% desc = meta.get_x('description') %>
+  <% og_image = meta.get_images.first.image if meta.has_image? %>
+  <% lang = meta.get_x('language') %>
+  <% keys = meta.get_x('keywords') %>
+
+  <% if sett_icon.present? %>
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="<%= image_url(sett_icon.url(:x57)) %>" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<%= image_url(sett_icon.url(:x114)) %>" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<%= image_url(sett_icon.url(:x72)) %>" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<%= image_url(sett_icon.url(:x144)) %>" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="<%= image_url(sett_icon.url(:x60)) %>" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="<%= image_url(sett_icon.url(:x120)) %>" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="<%= image_url(sett_icon.url(:x76)) %>" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="<%= image_url(sett_icon.url(:x152)) %>" />
+    <link rel="icon" type="image/png" href="<%= image_url(sett_icon.url(:x196)) %>"   sizes="196x196"/>
+    <link rel="icon" type="image/png" href="<%= image_url(sett_icon.url(:x96)) %>"   sizes="96x96" />
+    <link rel="icon" type="image/png" href="<%= image_url(sett_icon.url(:x32)) %>"   sizes="32x32" />
+    <link rel="icon" type="image/png" href="<%= image_url(sett_icon.url(:x16)) %>"   sizes="16x16" />
+    <link rel="icon" type="image/png" href="<%= image_url(sett_icon.url(:x128)) %>"   sizes="128x128" />
+    <meta name="application-name" content="<%= title %>"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="<%= image_url(sett_icon.url(:x144)) %>" />
+    <meta name="msapplication-square70x70logo" content="<%= image_url(sett_icon.url(:x70)) %>" />
+    <meta name="msapplication-square150x150logo" content="<%= image_url(sett_icon.url(:x150)) %>" />
+    <meta name="msapplication-wide310x150logo" content="<%= image_url(sett_icon.url(:x310)) %>" />
+    <meta name="msapplication-square310x310logo" content="<%= image_url(sett_icon.url(:x310)) %>" />
+  <% end %>
+
+  <title><%= title %></title>
+  <meta name="keywords" content="<%= keys %>">
+  <meta name="description" content="<%= desc %>">
+
+  <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'rpages', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  <!-- Sharing -->
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="<%= request.original_url %>" />
+  <meta property="og:locale" content="<%= lang %>" />
+  <meta property="og:site_name" content="<%= title %>" />
+
+  <meta property="og:title" content="<%= title %>"/>
+  <meta property="og:description" content="<%= desc %>" />
+  <meta property="og:image" content="<%= image_url(og_image.url(:fb)) if meta.has_image? %>" />
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:url" content="<%= request.original_url %>">
+  <meta name="twitter:title" content="<%= title %>">
+  <meta name="twitter:description" content="<%= desc %>">
+  <meta name="twitter:image" content="<%= image_url(og_image.url(:og)) if meta.has_image? %>">
+  
+</head>

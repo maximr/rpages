@@ -1,0 +1,22 @@
+<div id="<%= identificator %>" class="carousel background-image-carousel" data-ride="carousel" data-interval="<%= interval %>">
+  <ol class="carousel-indicators">
+    <% gallery_object.send(picture_object).each_with_index do |pic, i| %>
+      <li data-target="#<%= identificator %>" data-slide-to="<%= i %>" class="<%= 'active' if i == 0 %>"></li>
+    <% end %>
+  </ol>
+
+  <div class="carousel-inner" role="listbox">
+    <% gallery_object.send(picture_object).each_with_index do |pic, i| %>
+      <%= render 'components/single_slide', image_object: pic, image_field: :image, active_slide: i == 0 ? true : false, iterator: i, slide: slide %>
+    <% end %>
+  </div>
+
+  <a class="carousel-control-prev" href="#<%= identificator %>" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Prev</span>
+  </a>
+  <a class="carousel-control-next" href="#<%= identificator %>" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>

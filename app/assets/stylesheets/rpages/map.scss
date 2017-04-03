@@ -1,0 +1,36 @@
+.map_slide {
+  align-items: flex-end;
+
+  .slide_content_container {
+    padding: 0;
+    width: 100%;
+  }
+
+  .row {
+    width: 100%;
+    margin: 0;
+
+    .col-xs-12 {
+      padding: 0;
+
+      &.item_container {
+        padding: 3vh 1vw;
+      }
+    }
+  }
+
+  .item_container {
+    margin-bottom: 3vh;
+    text-align: center;
+
+    h2 {
+      margin-bottom: 2vh;
+    }
+  }
+
+  #map_container {
+    height: 70vh;
+    width: 100%;
+    display: block;
+  }
+}

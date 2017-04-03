@@ -1,0 +1,26 @@
+<% if slide.key.present? %>
+  <div class="row d-flex flex-row justify-content-center align-items-center">
+    <div class="col-xs-12 spacer-col">
+      <h2 class="display-2"><%= slide.key %></h2>
+    </div>
+  </div>
+<% end %>
+
+<div class="row row--stat d-flex flex-row justify-content-center align-items-baseline">
+  <% slide.get_custom_content_items.each do |block| %>
+    <div class="<%= slide.get_section_cols %>">
+      <div class="info-data-container">
+        <span class="number"><%= block['head'] %></span>
+        <span class="desc-head"><%= block['desc'].html_safe %></span>
+        <% if block['img'] %>
+          <span class="desc-img">
+            <%= image_tag(slide.get_image_url(block['img']), class: 'img-fluid')%>
+
+            <%# render 'content_blocks/icon_sizings', image: block['img'] %>
+          </span>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+</div>

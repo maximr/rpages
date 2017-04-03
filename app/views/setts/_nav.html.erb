@@ -1,0 +1,55 @@
+<% sett_image = default.get_images.present? ? default.get_images.first.image : nil %>
+
+<nav class="navbar fixed-top navbar-toggleable-md navbar-inverse bg-inverse" style="<%= generate_font_style %>">
+    <% klass = is_mobile? ? "" : 'hidden-ll-up' %>
+
+    <%= link_to('', class: "navbar-toggler navbar-toggler-right #{klass}", data: {toggle: "collapse", target: "#navItemsContainer"}, 
+                    aria: {controls: "navItemsContainer", expanded: true, label: "Toggle nav"}, id: "navtoggle") do %>
+      <%= fa_icon "bars 2x" %> 
+    <% end %>
+
+    <%= link_to "", '/', class: "navbar-brand navbar-brand-custom" %>
+
+    <div class="nav navbar-collapse" id="navItemsContainer" >
+        <% nav.get_objects.each do |nav_item| %>
+            <% if nav_item.type_is?('link') %>
+                <%= render 'setts/partials/nav_item', item: nav_item, link_class: 'nav-item nav-link active' %>
+            <% elsif nav_item.type_is?('collection') %>
+                <div class="nav-item dropdown">
+                    <%= link_to("", data: {toggle: "dropdown"}, role: "button", aria: {haspopup: true, expanded: false}, class: 'nav-link nav-dropdown') do %>
+                        <%= nav_item.title %>
+                        <%= fa_icon "caret-down" %> 
+                    <% end %>
+
+                    <div class="dropdown-menu">
+                        <% association = nav_item.get_polymorphic_object(nav_item.object_value) %>
+
+                        <% if association.present? %>
+                            <% association.get_objects.find_each do |x| %>
+                                <%= render 'setts/partials/nav_item', item: x, link_class: 'nav-link dropdown-item' %>
+                            <% end %>
+                        <% end %>
+                    </div>
+                </div>
+            <% end %>
+        <% end %>
+    </div>
+</nav>
+
+<% if sett_image.present? %>
+    <style media="screen">
+        .navbar .navbar-brand.navbar-brand-custom { background-image: url(<%= sett_image.url(:x03) %>) !important; }
+
+        @media (min-width: 768px) {
+            .navbar .navbar-brand.navbar-brand-custom { background-image: url(<%= sett_image.url(:x05) %>) !important; }
+        }
+
+        @media (min-width: 992px) {
+            .navbar .navbar-brand.navbar-brand-custom { background-image: url(<%= sett_image.url(:x075) %>) !important; }
+        }
+
+        @media (min-width: 1300px) {
+            .navbar .navbar-brand.navbar-brand-custom { background-image: url(<%= sett_image.url(:x500) %>) !important; }
+        }
+    </style>
+<% end %>

@@ -1,0 +1,25 @@
+<div class="col-xs-12">
+  <% if slide.key.present? %>
+    <div class="row d-flex flex-row justify-content-center align-items-center">
+      <div class="col-xs-12 spacer-col">
+        <h2 class="display-2"><%= slide.key %></h2>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="row row--schedule d-flex flex-row justify-content-center align-items-baseline">
+    <% items = slide.get_custom_content_items %>
+    <% items.each_with_index do |block, i| %>
+      <div class="<%= slide.get_section_cols %> stream_collection_container">
+        <div class="row d-flex justify-content-center align-items-baseline indv_stream">
+          <div class="col-xs-12 stream_head">
+            <h3 class="display-3"><%= block['head'] %></h3>
+          </div>
+
+          <%= render_smart_content slide, block['desc'], i %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+</div>

@@ -1,0 +1,116 @@
+.schedule_slide {
+  position: relative;
+  z-index: 10;
+
+  .stream_collection_container {
+    margin: 4vh 0;
+    z-index: 11;
+    width: 100%;
+
+    .indv_stream {
+      .stream_head {
+        width: 100%;
+        margin-bottom: 1.5rem;
+      }
+
+      .indv-item { 
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 90%;
+
+        &:before {
+          opacity: 0.3;
+          top: -2%;
+          left: -1%;
+          width: 102%;
+          height: 104%;
+        }
+
+        &:hover {
+          &:before {
+            opacity: 0.7;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+          }
+        }
+      }
+    }
+
+    .indv_stream {
+      z-index: 13;
+      position: relative;
+      margin-bottom: 2vh;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: stretch;
+      align-content: space-between;
+
+      .indv-item {
+        z-index: 15;
+        position: relative;
+        color: white;
+        margin-bottom: 1.6vh;
+        padding: 0.7vh 0.6vw;
+        transform: scale3d(1,1,1);
+        transition: transform 0.3s ease-in-out;
+        transition-delay: 0.1s;
+        font-family: 'Oswald', sans-serif;
+        width: 99%;
+
+        .item-title, .item-sub_title, .item-slot, .item-image, .item-description {
+          position: relative;
+          z-index: 16;
+          color: white;
+          display: block;
+          width: 100%;
+          font-size: 1.1rem;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+        }
+
+        .item-title, .item-sub_title {
+          text-transform: uppercase;
+        }
+
+        .item-slot, .item-sub_title {
+          color: black;
+        }
+
+        .item-slot, .item-title {
+          margin-bottom: 2%;
+        }
+
+        .item-image, .item-description {
+          display: none;
+        }
+
+        &:before {
+          transform: scale3d(1,1,1);
+          z-index: 14;
+          position: absolute;
+          content: '';
+          background: lighten($brand-primary, 20%);
+          top: 0%;
+          left: 1%;
+          width: 98%;
+          height: 100%;
+          opacity: 0.6;
+          transition: clip-path 0.25s ease-in-out;
+          transition-delay: 0.2s;
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        }
+
+        &:hover {
+          transform: scale3d(1.1,1.1,1.1);
+          
+          &:before {
+            opacity: 0.95;
+            clip-path: polygon(0 0, 100% 0, 97% 100%, 3% 100%);
+          }
+        }
+      }
+    }
+  }
+}
