@@ -5,6 +5,8 @@ module Rpages
     #not beatiful - but it should work....
     require 'rubygems'
     require 'stringex_lite'
+    require 'devise'
+    require 'figaro'
 
     #config.autoload_paths += Dir[Rpages.get_root.join('app', 'models', '{**}')]
     config.assets.precompile += Ckeditor.assets
