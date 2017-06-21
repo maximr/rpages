@@ -1,10 +1,6 @@
 source "https://rubygems.org"
 
-ruby "2.3.3"
-
-source 'https://rails-assets.org' do
-  gem 'rails-assets-tether', '>= 1.1.0', require: true
-end
+#ruby "2.3.3"
 
 #admin
 gem 'activeadmin', github: 'activeadmin/activeadmin', require: true
