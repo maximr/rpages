@@ -113,7 +113,7 @@ Quick Start
 
 ## Make sure to run every step!
 
-The setup is kinda complicated at the moment. Sorry for the trouble. But keep in mind that this is a complex gem & has a lot of dependencies & features.
+The setup is kinda complicated at the moment. Sorry for the trouble. But keep in mind that this is a complex gem & has a lot of dependencies & features. I really should add more automated generators in the future (didn't have time to do it yet. If you feel up to the task, please feel free to send me a pull request).
 
 ### Gem File
 
