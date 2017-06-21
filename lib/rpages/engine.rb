@@ -7,6 +7,14 @@ module Rpages
     require 'stringex_lite'
     require 'devise'
     require 'figaro'
+    require 'font-awesome-rails'
+    require 'rails-assets-tether'
+    require 'bootstrap'
+    require 'faker'
+    require 'annotate'
+    require 'paperclip'
+    require 'paperclip/av/transcoder'
+    require 'browser'
 
     #config.autoload_paths += Dir[Rpages.get_root.join('app', 'models', '{**}')]
     config.assets.precompile += Ckeditor.assets
