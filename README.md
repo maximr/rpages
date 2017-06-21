@@ -123,20 +123,46 @@ rails db:create
 
 ### Migrations
 
--> Run **rails g rpages:add_migrations** to create the migration file required to setup your database
--> Run **rails db:migrate** to migrate your database with the new migration file
+-> Run this line to create the migration file required to setup your database
+
+```ruby
+rails g rpages:add_migrations
+```
+
+-> Run this line to migrate your database with the new migration file
+
+```ruby
+rails db:migrate
+```
 
 ### Config & Admin User
 
--> Run **rails rpages:create_default_config** to create the default configuration file in config/... (Please make sure to rename it, in order for it to work properly)
--> Run **rails rpages:create_admin_user** to create the default admin account you need to access the backend
+-> Run this line to create the default configuration file in config/... (Please make sure to rename it, in order for it to work properly)
+
+```ruby
+rails rpages:create_default_config
+```
+
+-> Run this line to create the default admin account you need to access the backend
+
+```ruby
+rails rpages:create_admin_user
+```
 
 ### Setts
 
--> Run **rails rpages:create_default_setts** to create all of the default setts that are required by the application (see setts for details)
+-> Run this line to create all of the default setts that are required by the application (see setts for details)
+
+```ruby
+rails rpages:create_default_setts
+```
 
 ### Assets
--> Run **rails rpages:create_asset_files** - it will create most of the default assets & files required by the application
+-> Run this - it will create most of the default assets & files required by the application
+
+```ruby
+rails rpages:create_asset_files
+```
 
 ### Javascript
 
