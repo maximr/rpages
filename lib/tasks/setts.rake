@@ -1,4 +1,4 @@
-namespace :db do
+namespace :rpages do
   desc "This task creates the default setts"
 
   task create_default_setts: [:environment] do
@@ -17,18 +17,22 @@ namespace :db do
     puts "Creating the default Setts"
 
     begin
-      Sett.create!([
-        {sett_object: "main_settings", sett_type: "default", created_by: 1, updated_by: 1, primary: true, sett_objects_id: nil, name: "default_main"},
-        {sett_object: "main_settings", sett_type: "meta", created_by: 1, updated_by: 1, primary: true, sett_objects_id: nil, name: "main_sets"},
-        {sett_object: "navigation", sett_type: "menu", created_by: 1, updated_by: 1, primary: true, sett_objects_id: nil, name: "main_nav"},
-        {sett_object: "navigation", sett_type: "collection", created_by: 1, updated_by: 1, primary: false, sett_objects_id: nil, name: "dd1"},
-        {sett_object: "contact_links", sett_type: "collection", created_by: 1, updated_by: 1, primary: true, sett_objects_id: nil, name: "contact_links"},
-        {sett_object: "footer", sett_type: "menu", created_by: 1, updated_by: 1, primary: true, sett_objects_id: nil, name: "main_footer"},
-        {sett_object: "navigation", sett_type: "collection", created_by: 1, updated_by: 1, primary: false, sett_objects_id: nil, name: "footer_links"},
-        {sett_object: "tracking", sett_type: "collection", created_by: 1, updated_by: 1, primary: true, sett_objects_id: nil, name: "page_tracking"}
-      ])
+      if Sett.count == 0
+        Sett.create!([
+          {sett_object: "main_settings", sett_type: "default", created_by: 1, updated_by: 1, primary: true, sett_objects_id: nil, name: "default_main"},
+          {sett_object: "main_settings", sett_type: "meta", created_by: 1, updated_by: 1, primary: true, sett_objects_id: nil, name: "main_sets"},
+          {sett_object: "navigation", sett_type: "menu", created_by: 1, updated_by: 1, primary: true, sett_objects_id: nil, name: "main_nav"},
+          {sett_object: "navigation", sett_type: "collection", created_by: 1, updated_by: 1, primary: false, sett_objects_id: nil, name: "dd1"},
+          {sett_object: "contact_links", sett_type: "collection", created_by: 1, updated_by: 1, primary: true, sett_objects_id: nil, name: "contact_links"},
+          {sett_object: "footer", sett_type: "menu", created_by: 1, updated_by: 1, primary: true, sett_objects_id: nil, name: "main_footer"},
+          {sett_object: "navigation", sett_type: "collection", created_by: 1, updated_by: 1, primary: false, sett_objects_id: nil, name: "footer_links"},
+          {sett_object: "tracking", sett_type: "collection", created_by: 1, updated_by: 1, primary: true, sett_objects_id: nil, name: "page_tracking"}
+        ])
+      else
+        puts "Setts allready existent...."
+      end
     rescue
-      puts "Setts allready existent...."
+      puts "ERROR: Setts allready existent...."
     end
 
     puts "Creating the sett objects...."

@@ -1,5 +1,5 @@
-class CreateRPages < ActiveRecord::Migration[5.0]
-  def up
+class CreateRpages < ActiveRecord::Migration[5.0]
+  def change
     create_table "cb_galleries", id: false, force: :cascade do |t|
       t.integer "content_block_id"
       t.integer "gallery_id"
@@ -195,18 +195,5 @@ class CreateRPages < ActiveRecord::Migration[5.0]
       t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
       t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
     end
-  end
-
-  def down
-    drop_table :cb_galleries
-    drop_table :ckeditor_assets
-    drop_table :content_blocks
-    drop_table :galleries
-    drop_table :page_setts
-    drop_table :pages
-    drop_table :pics
-    drop_table :sett_objects
-    drop_table :setts
-    drop_table :users
   end
 end

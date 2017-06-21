@@ -1,0 +1,6 @@
+pagetitle: "rev"
+default_desc: "this is rev"
+default_img: "/default_meta.png"
+default_mail: "info@rev.digital"
+google_analytics_id: "..."
+WEB_CONCURRENCY: "1"
