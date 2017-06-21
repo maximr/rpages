@@ -29,10 +29,6 @@ Gem::Specification.new do |s|
   s.add_dependency "devise"
   s.add_dependency "figaro"
   s.add_dependency "browser"
-  s.add_dependency "", ""
-
-
-
 
   s.add_development_dependency "rake"
 
