@@ -15,6 +15,10 @@ module Rpages
     require 'paperclip'
     require 'paperclip/av/transcoder'
     require 'browser'
+    require 'country_select'
+    require 'select2-rails'
+    require 'flattened_active_admin'
+    require 'delayed_paperclip'
 
     #config.autoload_paths += Dir[Rpages.get_root.join('app', 'models', '{**}')]
     config.assets.precompile += Ckeditor.assets

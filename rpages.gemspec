@@ -29,6 +29,10 @@ Gem::Specification.new do |s|
   s.add_dependency "devise"
   s.add_dependency "figaro"
   s.add_dependency "browser"
+  s.add_dependency "country_select"
+  s.add_dependency "select2-rails"
+  s.add_dependency "flattened_active_admin"
+  s.add_dependency "delayed_paperclip"
 
   s.add_development_dependency "rake"
 

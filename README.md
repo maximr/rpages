@@ -113,11 +113,31 @@ Quick Start
 
 ## Make sure to run every step!
 
+The setup is kinda complicated at the moment. Sorry for the trouble. But keep in mind that this is a complex gem & has a lot of dependencies & features.
+
+### Gem File
+
+Add these gems to your gem file. The current versions are not up to date, so you need to require the git repos... at least for now.
+
+```
+gem 'activeadmin', github: 'activeadmin/activeadmin'
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+gem 'ckeditor', github: 'galetahub/ckeditor'
+gem "active_admin_multi_upload", github: 'maximr/active_admin_multi_upload'
+gem 'activeadmin-select2', github: 'mfairburn/activeadmin-select2'
+```
+Run the bundler
+
+```
+bundle install
+```
+
+
 ### Basis Setup
 
 I supposed you have allready created a Database for your App. If not, make sure to run first
 
-```ruby
+```
 rails db:create
 ```
 
@@ -125,13 +145,13 @@ rails db:create
 
 -> Run this line to create the migration file required to setup your database
 
-```ruby
+```
 rails g rpages:add_migrations
 ```
 
 -> Run this line to migrate your database with the new migration file
 
-```ruby
+```
 rails db:migrate
 ```
 
@@ -139,13 +159,13 @@ rails db:migrate
 
 -> Run this line to create the default configuration file in config/... (Please make sure to rename it, in order for it to work properly)
 
-```ruby
+```
 rails rpages:create_default_config
 ```
 
 -> Run this line to create the default admin account you need to access the backend
 
-```ruby
+```
 rails rpages:create_admin_user
 ```
 
@@ -153,14 +173,14 @@ rails rpages:create_admin_user
 
 -> Run this line to create all of the default setts that are required by the application (see setts for details)
 
-```ruby
+```
 rails rpages:create_default_setts
 ```
 
 ### Assets
 -> Run this - it will create most of the default assets & files required by the application
 
-```ruby
+```
 rails rpages:create_asset_files
 ```
 
