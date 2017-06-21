@@ -184,6 +184,16 @@ rails rpages:create_default_setts
 rails rpages:create_asset_files
 ```
 
+### Routes
+
+-> Add these lines to your /config/routes.rb
+
+```
+mount Ckeditor::Engine => '/ckeditor'
+devise_for :users, ActiveAdmin::Devise.config
+ActiveAdmin.routes(self)
+```
+
 ### Javascript
 
 -> Add these lines to your application js file:
