@@ -111,9 +111,63 @@ on GitHub.
 Quick Start
 -----------
 
+## Make sure to run every step!
+
+### Basis Setup
+
+I supposed you have allready created a Database for your App. If not, make sure to run first
+
+```ruby
+rails db:create
+```
+
 ### Migrations
 
-For now you have to copy the migration file by hand - this is going to get fixed in the next Version.
+-> Run **rails g rpages:add_migrations** to create the migration file required to setup your database
+-> Run **rails db:migrate** to migrate your database with the new migration file
+
+### Config & Admin User
+
+-> Run **rails rpages:create_default_config** to create the default configuration file in config/... (Please make sure to rename it, in order for it to work properly)
+-> Run **rails rpages:create_admin_user** to create the default admin account you need to access the backend
+
+### Setts
+
+-> Run **rails rpages:create_default_setts** to create all of the default setts that are required by the application (see setts for details)
+
+### Assets
+-> Run **rails rpages:create_asset_files** - it will create most of the default assets & files required by the application
+
+### Javascript
+
+-> Add these lines to your application js file:
+
+```Javascript
+  //= require rpages_admin
+
+  $map_key = 'Your_Google_Maps_Api_Key';
+  $brand_primary = 'Your_Brand_Color';
+```
+
+### CSS
+
+-> Add the following lines to your application.scss file:
+
+```CSS
+  $brand-secondary: #000; //change this to a value of your own
+  @import "variables"; //if you have a variables file - to redifine the rpages variables
+  @import "rpages/rpages";
+```
+
+### Controllers
+-> Add these lines to your application controller
+
+```ruby
+include RpagesHelper
+
+helper_method :get_device_data
+helper_method :is_mobile?
+```
 
 ### Models
 
@@ -123,36 +177,6 @@ If you want to be able to include dynamic models & database entries within Rpage
 class YourModel < ApplicationRecord
   include RpagesSelectable
 end
-```
-
-### Javascript
-
--> Create a file called "active_admin.js" in your main javascript asset folder - and add this line to it:
-
-```Javascript
-  //= require rpages_admin
-```
-
--> In order to be able to use the full app functionality, you should define two global variables in your application js file:
-
-```Javascript
-  $map_key = 'Your_Google_Maps_Api_Key';
-  $brand_primary = 'Your_Brand_Color';
-```
-
-### CSS
-
--> Create a file called "active_admin.scss" in your main css asset folder - and add this line to it:
-
-```CSS
-  @import "rpages/rpages_admin";
-```
-
--> Add the following lines to your application.scss file:
-
-```CSS
-  @import "variables"; //if you have a variables file - to redifine the rpages variables
-  @import "rpages/rpages";
 ```
 
 Note: If you want to overwrite any of the Sass variables defined within Rpages, please use a custom variables definition.
