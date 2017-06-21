@@ -2,28 +2,6 @@ module Rpages
   class Engine < ::Rails::Engine
     isolate_namespace Rpages
 
-    #not beatiful - but it should work....
-    require 'rubygems'
-    require 'activeadmin'
-    require 'inherited_resources'
-    require 'ckeditor'
-    require 'country_select'
-    require 'flattened_active_admin'
-    require 'active_admin_multi_upload'
-    require 'select2-rails'
-    require 'activeadmin-select2'
-    require 'delayed_paperclip'
-    require 'stringex'
-    require 'bootstrap'
-    require 'font-awesome-rails'
-    require 'faker'
-    require 'annotate'
-    require 'paperclip'
-    require 'paperclip-av-transcoder'
-    require 'devise'
-    require 'figaro'
-    require 'browser'
-
     #config.autoload_paths += Dir[Rpages.get_root.join('app', 'models', '{**}')]
     config.assets.precompile += Ckeditor.assets
 

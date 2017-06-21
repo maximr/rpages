@@ -19,5 +19,6 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", "~> 5.0"
   s.add_development_dependency "rake"
+
   s.files = Dir["{lib,vendor}/**/*"]
 end
