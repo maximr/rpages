@@ -3,36 +3,36 @@ source "https://rubygems.org"
 #ruby "2.3.3"
 
 #admin
-gem 'activeadmin', github: 'activeadmin/activeadmin', require: true
-gem 'inherited_resources', github: 'activeadmin/inherited_resources', require: true
-gem 'ckeditor', github: 'galetahub/ckeditor', require: true
-gem 'country_select', require: true
-gem 'flattened_active_admin', require: true
-gem "active_admin_multi_upload", github: 'maximr/active_admin_multi_upload', require: true
-gem 'select2-rails', require: true
-gem 'activeadmin-select2', github: 'mfairburn/activeadmin-select2', require: true
-gem "delayed_paperclip", require: true
+gem 'activeadmin', github: 'activeadmin/activeadmin'
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+gem 'ckeditor', github: 'galetahub/ckeditor'
+gem 'country_select'
+gem 'flattened_active_admin'
+gem "active_admin_multi_upload", github: 'maximr/active_admin_multi_upload'
+gem 'select2-rails'
+gem 'activeadmin-select2', github: 'mfairburn/activeadmin-select2'
+gem "delayed_paperclip"
 
 #app
-gem 'stringex', require: "stringex_lite"
+# gem 'stringex', require: "stringex_lite"
 
-#frontend
-gem 'bootstrap', '~> 4.0.0.alpha6'
-source 'https://rails-assets.org' do
-  gem 'rails-assets-tether', '>= 1.1.0'
-end
-gem "font-awesome-rails", require: true
+# #frontend
+# gem 'bootstrap', '~> 4.0.0.alpha6'
+# source 'https://rails-assets.org' do
+#   gem 'rails-assets-tether', '>= 1.1.0'
+# end
+# gem "font-awesome-rails"
 
-#dev
-gem 'faker', require: true
-gem 'annotate', require: true
+# #dev
+# gem 'faker'
+# gem 'annotate'
 
-#other
-gem "paperclip", "~> 5.0.0", require: true
-gem 'paperclip-av-transcoder', require: true
-gem 'devise', require: true
-gem "figaro", require: true
-gem "browser", :require => 'browser'
+# #other
+# gem "paperclip", "~> 5.0.0"
+# gem 'paperclip-av-transcoder'
+# gem 'devise'
+# gem "figaro"
+# gem "browser", :require => 'browser'
 
 # Declare your gem's dependencies in rpages.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
