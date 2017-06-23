@@ -225,6 +225,16 @@ helper_method :get_device_data
 helper_method :is_mobile?
 ```
 
+### Application config
+
+You should add this config settings to your config/application.rb to make sure your app works properly in production mode...
+
+```ruby
+config.autoload_paths += Dir[Rails.root.join('app', 'models', '{**}')]
+config.assets.precompile += Ckeditor.assets
+config.autoload_paths << Rails.root.join('lib')
+```
+
 ### Models
 
 If you want to be able to include dynamic models & database entries within Rpages, you should add following code in your *model*.rb file:
