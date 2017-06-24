@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   get 'association/:type' => 'pages#get_selection', as: 'get_rpages_selection'
   get 'cb/:id' => 'pages#get_cb_content', as: 'get_cb_content'
+  get 'vvf' => 'pages#vrview', as: 'vr_view'
 
   DynamicRouter.load
 end

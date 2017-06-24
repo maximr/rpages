@@ -127,6 +127,39 @@ function runDelayedScripts() {
   if($('#map_container').size()) {
     mapInitializer($map_key, $brand_primary, 'map_container', 100).build;
   }
+
+  runAndLoadScriptWhenElementExists($(".vrview"), 'vrview', function() {
+    $.each($(".vrview"), function(i, element) {
+      var the_elem = $(element);
+      var elem_id = the_elem.attr('id');
+      if (!the_elem.data('full')) {
+        var elem_height = the_elem.outerWidth() < window.outerHeight ? window.outerHeight * 0.5 : the_elem.outerWidth();
+        the_elem.css({
+          height: elem_height + 'px',
+          minHeight: (elem_height * 1.2) + 'px'
+        });
+      } else {
+         var elem_height = window.outerHeight * 0.9;
+      }
+      console.log(elem_height);
+
+      var vrViewElement = new VRView.Player('#' + elem_id, {
+        width: '100%',
+        height: elem_height,
+        is_stereo: false,
+        is_autopan_off: true,
+        image: '/images/blank.png'
+      });
+
+      vrViewElement.on('ready', function() {
+        vrViewElement.setContent({
+          image: the_elem.data('img'),
+          preview: the_elem.data('preview')
+        });
+        vrViewElement.getPosition();
+      });
+    });
+  });
 }
 
 function buttonActions() {
@@ -192,7 +225,7 @@ $(document).on("turbolinks:load", function() {
   window.requestAnimationFrame(function() {
     fixes().run;
     updateIframes();
-    navActions();
+    if ($('.nav-item').size() != 0) navActions();
     clickTargetActions();
     customSlideEvents();
     buttonActions();

@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
-  layout 'rpages'
+  layout nil, only: [:vrview]
+  layout 'rpages', except: [:vrview]
   include PagesHelper
 
   def root
@@ -70,6 +71,10 @@ class PagesController < ApplicationController
     else
       render inline: "<h2>Nothing here...</h2>"
     end
+  end
+
+  def vrview
+
   end
 
   #private

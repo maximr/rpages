@@ -22,6 +22,13 @@
             <%= block['desc'].html_safe %>
           <% end %>
         </div>
+      <% elsif block['head'].to_s.include?('vrview') %>
+        <% random_vrid = "vr_view_" << (0...15).map { ('a'..'z').to_a[rand(26)] }.join %>
+        <div class="vrview" id="<%= random_vrid %>" style="height: 50vh; min-height: 65vh;" data-img="<%= slide.get_image_url(block['img']) %>" data-preview="<%= slide.get_image_url(block['img']).gsub('original','thumb') %>">
+          <% if block['desc'].present? %>
+            <%= block['desc'].html_safe %>
+          <% end %>
+        </div>
       <% elsif block['head'].to_s.include?('card') %>
         <div class="media-item card">
           <% if block['img'].present? %>

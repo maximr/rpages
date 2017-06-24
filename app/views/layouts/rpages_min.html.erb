@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <% cache [@sett_main, @sett_meta] do %>
+    <% if @sett_main && @sett_meta %>
+      <%= render 'setts/header', default: @sett_main, meta: @sett_meta %>
+    <% else %>
+      <%= render 'partials/header' %>
+    <% end %>
+  <% end %>
+
+  <div style="display:none;" id="exchange_div"
+    data-font="<%= generate_style_data %>"
+    data-counter="<%= asset_url "jquery.counterup.min", type: :javascript %>"
+    data-particles="<%= asset_url "particles.min", type: :javascript %>"
+    data-flip="<%= asset_url "jquery.flip.min", type: :javascript %>"
+    data-vide="<%= asset_url "jquery.vide", type: :javascript %>"
+    data-fitvids="<%= asset_url "jquery.fitvids", type: :javascript %>"
+    data-vrview="<%= asset_url "vrview", type: :javascript %>"
+    data-three="<%= asset_url "three", type: :javascript %>"
+    data-embed="<%= asset_url "embed", type: :javascript %>"
+  ></div>
+
+  <body data-device="<%= get_device_data %>" style="<%= generate_font_style %>">
+    <%= yield %>
+  </body>
+</html>

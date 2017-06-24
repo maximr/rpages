@@ -30,13 +30,33 @@ function toVariableString(item, prepend) {
 
 function runAndLoadScriptWhenElementExists(element, script_name, fn) {
   if(element.size()) {
-
-    if(window[toVariableString(script_name, 'script')] != true) {
-      var script_url = $("#exchange_div").data(script_name);
-      window[toVariableString(script_name, 'script')] = true;
-      jQuery.loadScript(script_url, fn);
+    if(!Array.isArray(script_name)) {
+      if(window[toVariableString(script_name, 'script')] != true) {
+        var script_url = $("#exchange_div").data(script_name);
+        window[toVariableString(script_name, 'script')] = true;
+        jQuery.loadScript(script_url, fn);
+      } else {
+        fn.call();
+      }
     } else {
-      fn.call();
+      var script_num = script_name.length;
+      $.each(script_name, function(i, v) {
+        if(window[toVariableString(v, 'script')] != true) {
+          var script_url = $("#exchange_div").data(v);
+          
+          if ((i+1) == script_num) { 
+            jQuery.loadScript(script_url, fn);
+          } else { 
+            jQuery.loadScript(script_url, function() {
+              console.log('skip...');
+            });
+          }
+        } else if ((i+1) == script_num && window[toVariableString(v, 'script')] == true) {
+          fn.call();
+        }
+
+        window[toVariableString(v, 'script')] = true;
+      });
     }
   }
 }

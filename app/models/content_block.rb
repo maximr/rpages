@@ -98,8 +98,8 @@ class ContentBlock < ApplicationRecord
 
   BLOCK_TYPES = %w{ pagecontent }
 
-  BLOCK_TEMPLATES = %w{ none intro counter flipcard reveal media schedule map iframe }
-  BLOCK_TEMPLATE_CLASSES = ['', 'intro_slide', 'counter_slide', 'flipcard_slide', '', 'media_slide', 'schedule_slide', 'map_slide', 'iframe_slide']
+  BLOCK_TEMPLATES = %w{ none intro counter flipcard reveal media schedule map iframe vrview }
+  BLOCK_TEMPLATE_CLASSES = ['', 'intro_slide', 'counter_slide', 'flipcard_slide', '', 'media_slide', 'schedule_slide', 'map_slide', 'iframe_slide', 'vrview_slide']
 
   BLOCK_APPEARANCES = %w{ none black gray primary secondary content_left content_bottom content_right content_top fade1 fade2 fade3 cutoff_top cutoff_bottom no_margin no_padding_bottom content_triangle content_background content_box 3d_box text_size_0.5 text_size_1.5 text_size_2 text_size_3 }
   BLOCK_APPEARANCE_CLASSES = ['', 'slide--black_back', 'slide--gray_back', 'slide--main_back', 

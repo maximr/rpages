@@ -1,0 +1,13 @@
+<% if slide.key.present? %>
+  <div class="row d-flex flex-row justify-content-center align-items-center">
+    <div class="col-xs-12 spacer-col">
+      <h2 class="display-2"><%= slide.key %></h2>
+    </div>
+  </div>
+<% end %>
+
+<div class="row d-flex flex-row justify-content-center align-items-center vrview-container">
+  <div class="vrview" data-img="<%= slide.get_image_url(block['img']) %>" data-preview="<%= slide.get_image_url(block['img']).gsub('original','thumb') %>" data-full="true">
+
+  </div>
+</div>
