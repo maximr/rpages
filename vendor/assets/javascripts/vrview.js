@@ -436,6 +436,11 @@ function Player(selector, contentInfo) {
   var parentEl = document.querySelector(selector);
   parentEl.appendChild(iframe);
 
+  console.log(parentEl);
+  console.log(selector);
+  console.log(contentInfo);
+  console.log(iframe);
+
   // Make a sender as well, for relying commands to the child IFrame.
   this.sender = new IFrameMessageSender(iframe);
 
@@ -666,16 +671,23 @@ Player.prototype.injectFullscreenStylesheet_ = function() {
   document.body.appendChild(style);
 };
 
+function GetBaseURL() {
+  var getUrl = window.location;
+  var baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[0];
+  return baseUrl;
+}
+
 Player.prototype.getEmbedUrl_ = function() {
   // Assume that the script is in $ROOT/build/something.js, and that the iframe
   // HTML is in $ROOT/index.html.
   //
   // E.g: /vrview/2.0/build/vrview.min.js => /vrview/2.0/index.html.
-  var path = CURRENT_SCRIPT_SRC;
-  var split = path.split('/');
-  var rootSplit = split.slice(0, split.length - 2);
-  var rootPath = rootSplit.join('/');
-  return rootPath + '/vvf';
+  var path = GetBaseURL();//CURRENT_SCRIPT_SRC //realy? I mean - realy?;
+  
+  //var split = path.split('/');
+  //var rootSplit = split.slice(0, split.length - 2);
+  //var rootPath = rootSplit.join('/');
+  return path + '/vvf'; //rootPath + '/vvf';
   //return rootPath + '/index.html'; //original (who ever had the idea to hardcode this to root/index.html - why - just why...)
 };
 

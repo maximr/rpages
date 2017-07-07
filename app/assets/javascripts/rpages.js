@@ -133,15 +133,14 @@ function runDelayedScripts() {
       var the_elem = $(element);
       var elem_id = the_elem.attr('id');
       if (!the_elem.data('full')) {
-        var elem_height = the_elem.outerWidth() < window.outerHeight ? window.outerHeight * 0.5 : the_elem.outerWidth();
+        var elem_height = the_elem.outerWidth() < window.outerHeight ? window.outerHeight * 0.5 : the_elem.outerWidth() * 0.6;
         the_elem.css({
           height: elem_height + 'px',
-          minHeight: (elem_height * 1.2) + 'px'
+          minHeight: (elem_height * 1.1) + 'px'
         });
       } else {
          var elem_height = window.outerHeight * 0.9;
       }
-      console.log(elem_height);
 
       var vrViewElement = new VRView.Player('#' + elem_id, {
         width: '100%',

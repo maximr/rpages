@@ -1,7 +1,5 @@
-<% if Rails.env == 'production' %>
-  <div class="trackers">
-    <% tracker.get_objects.each do |track| %>
-      <%= render "partials/tracking/#{track.object_modifier}", id: track.clean_output('body') %>
-    <% end %>
-  </div>
-<% end %>
+<div class="trackers">
+  <% tracker.get_objects.each do |track| %>
+    <%= render "partials/tracking/#{track.object_modifier}", id: track.clean_output('body') %>
+  <% end %>
+</div>

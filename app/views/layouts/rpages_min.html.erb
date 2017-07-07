@@ -23,4 +23,20 @@
   <body data-device="<%= get_device_data %>" style="<%= generate_font_style %>">
     <%= yield %>
   </body>
+
+  <% if Rails.env == 'production' || ENV['override_production'] == 'true' %>
+      <% cache @sett_track do %>
+        <% if @sett_track %>
+          <%= render 'setts/tracking', tracker: @sett_track, cached: true %>
+        <% else %>
+          <% if Rails.env == 'production' %>
+            <%= render 'partials/tracking/google_analytics', id: Figaro.env.google_analytics_id %>
+            <%= render 'partials/tracking/hubspot', id: Figaro.env.hubspot_id %>
+            <%= render 'partials/tracking/facebook', id: Figaro.env.facebook_id %>
+            <%= render 'partials/tracking/google_adwords', id: Figaro.env.google_adwords_id %>
+            <%= render 'partials/tracking/mouseflow', id: Figaro.env.mouseflow_id %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
 </html>
