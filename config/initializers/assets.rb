@@ -12,6 +12,7 @@ Rails.application.config.assets.version = '1.0'
 
 Rails.application.config.assets.precompile += %w( rpages.js rpages_admin.js webfontloader.js jquery.counterup.min.js particles.min.js jquery.flip.min.js jquery.vide.js  )
 Rails.application.config.assets.precompile += %w( active_admin_multi_upload/jquery_upload.css ckeditor/config.js jquery.fitvids.js )
+Rails.application.config.assets.precompile += %w( cocoen.min.js cocoen-jquery.min.js )
 Rails.application.config.assets.precompile += %w( ckeditor/filebrowser/thumbs/pdf.gif )
 Rails.application.config.assets.precompile += %w( ckeditor/filebrowser/thumbs/jpg.gif )
 Rails.application.config.assets.precompile += %w( ckeditor/filebrowser/thumbs/png.gif )

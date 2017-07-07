@@ -436,11 +436,6 @@ function Player(selector, contentInfo) {
   var parentEl = document.querySelector(selector);
   parentEl.appendChild(iframe);
 
-  console.log(parentEl);
-  console.log(selector);
-  console.log(contentInfo);
-  console.log(iframe);
-
   // Make a sender as well, for relying commands to the child IFrame.
   this.sender = new IFrameMessageSender(iframe);
 

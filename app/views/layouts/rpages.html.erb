@@ -18,6 +18,8 @@
     data-vrview="<%= asset_url "vrview", type: :javascript %>"
     data-three="<%= asset_url "three", type: :javascript %>"
     data-embed="<%= asset_url "embed", type: :javascript %>"
+    data-cocoen="<%= asset_url "cocoen.min", type: :javascript %>"
+    data-cocoen-jquery="<%= asset_url "cocoen-jquery.min", type: :javascript %>"
   ></div>
 
   <body data-device="<%= get_device_data %>" style="<%= generate_font_style %>">
@@ -43,7 +45,7 @@
       <% end %>
     <% end %>
 
-    <% if Rails.env == 'production' %>
+    <% if Rails.env == 'production' || ENV['override_production'] == 'true' %>
       <% cache @sett_track do %>
         <% if @sett_track %>
           <%= render 'setts/tracking', tracker: @sett_track, cached: true %>

@@ -159,6 +159,10 @@ function runDelayedScripts() {
       });
     });
   });
+
+  runAndLoadScriptWhenElementExists($(".cocoen"), ['cocoen', 'cocoen-jquery'], function() {
+    $('.cocoen').cocoen();
+  });
 }
 
 function buttonActions() {
