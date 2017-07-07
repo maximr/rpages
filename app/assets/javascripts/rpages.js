@@ -161,7 +161,17 @@ function runDelayedScripts() {
   });
 
   runAndLoadScriptWhenElementExists($(".cocoen"), ['cocoen', 'cocoen-jquery'], function() {
-    $('.cocoen').cocoen();
+    int count = 0;
+    int maxTries = 3;
+
+    while(true) {
+      try {
+        $('.cocoen').cocoen();
+      } catch (e) {
+        if (++count == maxTries) throw e;
+      }
+    }
+    
   });
 }
 
