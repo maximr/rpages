@@ -16,12 +16,21 @@ $.fn.extend({
 });
 
 jQuery.loadScript = function (url, callback) {
-  jQuery.ajax({
-      url: url,
-      dataType: 'script',
-      success: callback,
-      async: true
-  });
+  int count = 0;
+  int maxTries = 3;
+
+  while(true) {
+    try {
+      jQuery.ajax({
+        url: url,
+        dataType: 'script',
+        success: callback,
+        async: true
+      });
+    } catch (e) {
+      if (++count == maxTries) throw e;
+    }
+  }
 }
 
 function toVariableString(item, prepend) {
@@ -36,7 +45,16 @@ function runAndLoadScriptWhenElementExists(element, script_name, fn) {
         window[toVariableString(script_name, 'script')] = true;
         jQuery.loadScript(script_url, fn);
       } else {
-        fn.call();
+        int count = 0;
+        int maxTries = 3;
+
+        while(true) {
+          try {
+            fn.call();
+          } catch (e) {
+            if (++count == maxTries) throw e;
+          }
+        }
       }
     } else {
       var script_num = script_name.length;
@@ -52,7 +70,16 @@ function runAndLoadScriptWhenElementExists(element, script_name, fn) {
             });
           }
         } else if ((i+1) == script_num && window[toVariableString(v, 'script')] == true) {
-          fn.call();
+          int count = 0;
+          int maxTries = 3;
+
+          while(true) {
+            try {
+              fn.call();
+            } catch (e) {
+              if (++count == maxTries) throw e;
+            }
+          }
         }
 
         window[toVariableString(v, 'script')] = true;
