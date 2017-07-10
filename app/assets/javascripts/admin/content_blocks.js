@@ -5,7 +5,7 @@ var contentBlocks = (function(block) {
   function init() {
     _getContentBlocks();
 
-    if(theBlocks.size() > 0) {
+    if(theBlocks.length) {
       if (!isInitialized()) {
         _initializeBlock();
         _checkBlockType();

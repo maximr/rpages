@@ -46,7 +46,7 @@ function clickTargetActions() {
 function iconItemActions() {
   var icon_items = $(".slide .icon-item-container");
 
-  if(icon_items.size()) {
+  if(icon_items.length) {
     //var item_height = getMaxHeight(icon_items.find('div')) + 40;
 
     icon_items.flip({
@@ -117,7 +117,7 @@ function runDelayedScripts() {
     $(".video_iframe_container").fitVids();
   });
 
-  if($('#map_container').size()) {
+  if($('#map_container').length) {
     mapInitializer($map_key, $brand_primary, 'map_container', 100).build;
   }
 
@@ -164,7 +164,7 @@ function buttonActions() {
     $(this).on('click', function() {
       var target = $('.' + $(this).attr('name'));
 
-      if (target.size) {
+      if (target.length) {
         $('html, body').animate({
           scrollTop: target.offset().top
         }, 2000);
@@ -202,7 +202,7 @@ var customSlideEvents = function(slide) {
    $(".slide").each(function(s) {
     var slide = $(this);
 
-    if(slide.find(".reveal_container").size() > 0) revealSlider(slide.find(".reveal_container")).init;
+    if(slide.find(".reveal_container").length) revealSlider(slide.find(".reveal_container")).init;
   });
 }
 
@@ -221,7 +221,7 @@ $(document).on("turbolinks:load", function() {
   window.requestAnimationFrame(function() {
     fixes().run;
     updateIframes();
-    if ($('.nav-item').size() != 0) navActions();
+    if ($('.nav-item').length != 0) navActions();
     clickTargetActions();
     customSlideEvents();
     buttonActions();

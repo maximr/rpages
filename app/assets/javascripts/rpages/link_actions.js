@@ -26,7 +26,7 @@ function linkActionResponse(e) {
 }
 
 function linkActions() {
-  if($('.popup-trigger').size) {
+  if($('.popup-trigger').length) {
     $('.popup-trigger').unbind('click', linkActionResponse);
     $('.popup-trigger').bind('click', linkActionResponse);
 

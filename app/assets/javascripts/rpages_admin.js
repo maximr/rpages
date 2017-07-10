@@ -20,7 +20,7 @@ function readURL(input) {
     reader.onload = function (e) {
       var preview = $(input).parent().find('.image-preview');
 
-      if(preview.size()) {
+      if(preview.length) {
         preview.attr('src', e.target.result);
       } else {
         $(input).after('<img class="image-preview" style="margin-bottom:0;width:75px;"src="' + e.target.result + '" alt="Preview">');

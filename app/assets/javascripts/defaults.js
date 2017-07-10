@@ -16,8 +16,8 @@ $.fn.extend({
 });
 
 jQuery.loadScript = function (url, callback) {
-  int count = 0;
-  int maxTries = 3;
+  var count = 0;
+  var maxTries = 3;
 
   while(true) {
     try {
@@ -38,15 +38,15 @@ function toVariableString(item, prepend) {
 }
 
 function runAndLoadScriptWhenElementExists(element, script_name, fn) {
-  if(element.size()) {
+  if(element.length) {
     if(!Array.isArray(script_name)) {
       if(window[toVariableString(script_name, 'script')] != true) {
         var script_url = $("#exchange_div").data(script_name);
         window[toVariableString(script_name, 'script')] = true;
         jQuery.loadScript(script_url, fn);
       } else {
-        int count = 0;
-        int maxTries = 3;
+        var count = 0;
+        var maxTries = 3;
 
         while(true) {
           try {
@@ -70,8 +70,8 @@ function runAndLoadScriptWhenElementExists(element, script_name, fn) {
             });
           }
         } else if ((i+1) == script_num && window[toVariableString(v, 'script')] == true) {
-          int count = 0;
-          int maxTries = 3;
+          var count = 0;
+          var maxTries = 3;
 
           while(true) {
             try {

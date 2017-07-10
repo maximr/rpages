@@ -1,6 +1,6 @@
 <% sett_image = default.get_images.present? ? default.get_images.first.image : nil %>
 
-<nav class="navbar fixed-top navbar-toggleable-md navbar-inverse bg-inverse" style="<%= generate_font_style %>">
+<nav class="navbar fixed-top navbar-toggleable-md navbar-inverse bg-inverse default-nav" style="<%= generate_font_style %>">
     <% klass = is_mobile? ? "" : 'hidden-ll-up' %>
 
     <%= link_to('', class: "navbar-toggler navbar-toggler-right #{klass}", data: {toggle: "collapse", target: "#navItemsContainer"}, 

@@ -2,7 +2,7 @@ function navActions() {
   var toggle = $('#navtoggle:visible');
   var collapse_content = $('.navbar-collapse');
 
-  if(toggle.size() > 0) {
+  if(toggle.length) {
     toggle.collapse('hide');
     $(".navbar .navbar-collapse").addClass('collapse');
   } else {

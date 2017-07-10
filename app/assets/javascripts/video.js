@@ -10,8 +10,8 @@ function initVideo() {
     //if(!$.browserData.browser == 'Chrome') video_item.addClass('paused'); //todo: fix me
     video_item.addClass('paused');
 
-    onScrollBy(next_container, 'down', 25, function() { if(video_item.size()) pauseVideo(video_item); });
-    onScrollBy(next_container, 'up', 25, function() { if(video_item.size()) playVideo(video_item); });
+    onScrollBy(next_container, 'down', 25, function() { if(video_item.length) pauseVideo(video_item); });
+    onScrollBy(next_container, 'up', 25, function() { if(video_item.length) playVideo(video_item); });
   }
 }
 
