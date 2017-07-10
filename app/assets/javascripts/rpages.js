@@ -1,6 +1,7 @@
-//= require jquery
+//= require jquery3
 //= require jquery_ujs
 //= require tether
+//= require bootstrap-sprockets
 
 // = require bootstrap/util
 // = require bootstrap/alert
@@ -11,15 +12,7 @@
 // = require bootstrap/modal
 
 //= require jquery.mobile-events.min
-// require jquery.tabSlideOut.js
 //= require waypoint.min
-
-// require jquery.counterup.min
-// require particles.min
-// require jquery.flip.min
-// require jquery.vide
-// require jquery.scrollstop
-// require webfontloader
 
 //= require turbolinks
 

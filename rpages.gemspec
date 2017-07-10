@@ -19,6 +19,9 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", "~> 5.0"
   s.add_dependency "stringex"
+  s.add_dependency "popper_js", "~> 1.9.9"
+  s.add_dependency "bourbon"
+  s.add_dependency "jquery-rails"
   s.add_dependency "bootstrap", "~> 4.0.0.alpha6"
   s.add_dependency "rails-assets-tether", ">= 1.1.0"
   s.add_dependency "font-awesome-rails"
