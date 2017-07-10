@@ -61,7 +61,9 @@ function runAndLoadScriptWhenElementExists(element, script_name, fn) {
         while(true) {
           try {
             fn.call();
+            break;
           } catch (e) {
+            console.log("[Error] " + e);
             if (++count == maxTries) throw e;
           }
         }
@@ -86,7 +88,9 @@ function runAndLoadScriptWhenElementExists(element, script_name, fn) {
           while(true) {
             try {
               fn.call();
+              break;
             } catch (e) {
+              console.log("[Error] " + e);
               if (++count == maxTries) throw e;
             }
           }

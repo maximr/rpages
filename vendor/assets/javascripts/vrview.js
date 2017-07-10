@@ -682,7 +682,7 @@ Player.prototype.getEmbedUrl_ = function() {
   //var split = path.split('/');
   //var rootSplit = split.slice(0, split.length - 2);
   //var rootPath = rootSplit.join('/');
-  return path + '/vvf'; //rootPath + '/vvf';
+  return ((path.lenght > 1) ? path + '/vvf' : '/vvf'); //rootPath + '/vvf';
   //return rootPath + '/index.html'; //original (who ever had the idea to hardcode this to root/index.html - why - just why...)
 };
 
