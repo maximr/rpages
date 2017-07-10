@@ -16,21 +16,31 @@ $.fn.extend({
 });
 
 jQuery.loadScript = function (url, callback) {
-  var count = 0;
-  var maxTries = 3;
+  jQuery.ajax({
+    url: url,
+    dataType: 'script',
+    success: callback,
+    tryCount : 0,
+    retryLimit : 3,
+    async: true,
+    error: function(xhr, textStatus, errorThrown ) {
+      if (textStatus == 'timeout') {
+        console.log("Timeout when loading: " + url);
+      }
+      if (xhr.status == 500) {
+        console.log("Error 500 when loading: " + url);
+      } else {
+        console.log("Unknown error when loading: " + url);
+      }
 
-  while(true) {
-    try {
-      jQuery.ajax({
-        url: url,
-        dataType: 'script',
-        success: callback,
-        async: true
-      });
-    } catch (e) {
-      if (++count == maxTries) throw e;
+      this.tryCount++;
+      if (this.tryCount <= this.retryLimit) {
+        $.ajax(this);
+        return;
+      }            
+      return;
     }
-  }
+  });
 }
 
 function toVariableString(item, prepend) {
