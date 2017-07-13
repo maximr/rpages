@@ -2,8 +2,9 @@
 //= require jquery-fileupload
 //= require jquery-fileupload/vendor/tmpl
 //= require active_admin/select2
-//= require ckeditor/config
+
 //= require ckeditor/init
+//= require ckeditor/config
 
 //custom
 //= require ./admin/content_blocks
@@ -31,7 +32,7 @@ function readURL(input) {
   }
 }
 
-$(document).on('ready', function() {
+$(document).ready(function() {
 
   console.log("loading rpages_admin js");
 
