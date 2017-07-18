@@ -10,6 +10,21 @@
 //= require ./admin/content_blocks
 //= require ./admin/dynamic_select2
 
+initSelect2 = function(inputs, extra) {
+  if (extra == null) {
+    extra = {};
+  }
+  return inputs.each(function() {
+    var item, options;
+    item = $(this);
+    options = $.extend({
+      allowClear: true
+    }, extra, item.data('select2'));
+    item.data('select2', null);
+    return item.select2(options);
+  });
+};
+
 function uniqId() {
   return Math.round(new Date().getTime() + (Math.random() * 100));
 }
@@ -36,6 +51,8 @@ $(document).ready(function() {
 
   console.log("loading rpages_admin js");
 
+  initSelect2($('.select2-input'));
+
   $("div.content_block_container .slim_content_block").each(function() {
     contentBlocks($(this)).init;
   });
@@ -52,6 +69,8 @@ $(document).ready(function() {
 
   $(document).delegate(".has_many_add", "click", function() {
     var item = $(this).prev(".slim_content_block");
+
+    initSelect2(item.find('.select2-input'));
 
     setTimeout( function() {
       contentBlocks(item).init;
