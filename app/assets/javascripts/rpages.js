@@ -106,7 +106,8 @@ function runDelayedScripts() {
   });
 
   runAndLoadScriptWhenElementExists($('.particle_container'), 'particles', function() {
-    loadParticlesJS();
+    var partNum = parseInt($('.particle_container').data('particle-num'));
+    loadParticlesJS(partNum);
   });
 
   runAndLoadScriptWhenElementExists($(".icon-item-container"), 'flip', function() {

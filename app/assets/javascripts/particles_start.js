@@ -1,8 +1,10 @@
-function loadParticlesJS() { 
+function loadParticlesJS(num) {
+  var count = num == 0 ? 10 : num;
+  
   particlesJS("particles-js", {
      "particles": {
       "number": {
-        "value": 20,
+        "value": count,
         "density": {
           "enable": true,
           "value_area": 800
