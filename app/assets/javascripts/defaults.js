@@ -51,9 +51,20 @@ function runAndLoadScriptWhenElementExists(element, script_name, fn) {
   if(element.length) {
     if(!Array.isArray(script_name)) {
       if(window[toVariableString(script_name, 'script')] != true) {
-        var script_url = $("#exchange_div").data(script_name);
-        window[toVariableString(script_name, 'script')] = true;
-        jQuery.loadScript(script_url, fn);
+        var count = 0;
+        var maxTries = 3;
+
+        while(true) {
+          try {
+            var script_url = $("#exchange_div").data(script_name);
+            window[toVariableString(script_name, 'script')] = true;
+            jQuery.loadScript(script_url, fn);
+            break;
+          } catch (e) {
+            console.log("[Error] " + e);
+            if (++count == maxTries) throw e;
+          }
+        }
       } else {
         var count = 0;
         var maxTries = 3;
@@ -72,14 +83,25 @@ function runAndLoadScriptWhenElementExists(element, script_name, fn) {
       var script_num = script_name.length;
       $.each(script_name, function(i, v) {
         if(window[toVariableString(v, 'script')] != true) {
-          var script_url = $("#exchange_div").data(v);
-          
-          if ((i+1) == script_num) { 
-            jQuery.loadScript(script_url, fn);
-          } else { 
-            jQuery.loadScript(script_url, function() {
-              console.log('skip...');
-            });
+          var count = 0;
+          var maxTries = 3;
+
+          while(true) {
+            try {
+              var script_url = $("#exchange_div").data(v);
+              
+              if ((i+1) == script_num) { 
+                jQuery.loadScript(script_url, fn);
+              } else { 
+                jQuery.loadScript(script_url, function() {
+                  console.log('skip...');
+                });
+              }
+              break;
+            } catch (e) {
+              console.log("[Error] " + e);
+              if (++count == maxTries) throw e;
+            }
           }
         } else if ((i+1) == script_num && window[toVariableString(v, 'script')] == true) {
           var count = 0;
