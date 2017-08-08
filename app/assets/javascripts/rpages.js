@@ -151,6 +151,31 @@ function runDelayedScripts() {
         });
         vrViewElement.getPosition();
       });
+
+      try {
+        function changeHandler(e) {
+          if($(e.target.parentElement).attr('id') == $(element).attr('id')) {
+            if (!window.screenTop && !window.screenY) {
+              //not fullscreen
+              $('.hidden_on_fullscreen').show();
+            } else {
+              //fullscreen
+              $('.hidden_on_fullscreen').hide();
+            }
+          }
+
+          if (!window.screenTop && !window.screenY) {
+            //not fullscreen
+            $('.hidden_on_fullscreen').show();
+          } 
+        }
+
+        document.addEventListener("fullscreenchange", changeHandler, false);
+        document.addEventListener("webkitfullscreenchange", changeHandler, false);
+        document.addEventListener("mozfullscreenchange", changeHandler, false);
+      } catch (e) { 
+        console.log("unknown error: " + e);
+      }
     });
   });
 
