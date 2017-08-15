@@ -105,6 +105,10 @@ function runDelayedScripts() {
     });
   });
 
+  runAndLoadScriptWhenElementExists($(".cocoen"), ['cocoen', 'cocoen-jquery'], function() {
+    $('.cocoen').cocoen();
+  });
+
   runAndLoadScriptWhenElementExists($('.particle_container'), 'particles', function() {
     var partNum = parseInt($('.particle_container').data('particle-num'));
     loadParticlesJS(partNum);
@@ -154,14 +158,14 @@ function runDelayedScripts() {
 
       try {
         function changeHandler(e) {
-          if($(e.target.parentElement).attr('id') == $(element).attr('id')) {
-            if (!window.screenTop && !window.screenY) {
-              //not fullscreen
-              $('.hidden_on_fullscreen').show();
-            } else {
-              //fullscreen
-              $('.hidden_on_fullscreen').hide();
-            }
+          if(e.target.parentElement == null || ($(e.target.parentElement).attr('id') == $(element).attr('id')) ) {
+            $('.hidden_on_fullscreen').each(function(e) {
+              if($(this).css('opacity') != 0) {
+                $(this).hide().css({'opacity': 0});
+              } else {
+                $(this).show().css({'opacity': 'inherit'});
+              }
+            });
           }
 
           if (!window.screenTop && !window.screenY) {
@@ -177,10 +181,6 @@ function runDelayedScripts() {
         console.log("unknown error: " + e);
       }
     });
-  });
-
-  runAndLoadScriptWhenElementExists($(".cocoen"), ['cocoen', 'cocoen-jquery'], function() {
-    $('.cocoen').cocoen();
   });
 }
 
